@@ -1,0 +1,9 @@
+sentence-transformers>=5.4
+transformers>=4.55,<5
+gradio>=5
+google-genai>=1.0
+huggingface_hub>=0.25
+requests>=2.31
+pandas>=2
+numpy>=1.26
+pydantic>=2
