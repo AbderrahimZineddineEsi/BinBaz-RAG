@@ -15,6 +15,7 @@ data/*
 !data/.gitkeep
 kaggle_embedding_outputs/
 upload_hf.py
+*.pdf
 
 # OS / editor
 .DS_Store

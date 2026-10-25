@@ -119,14 +119,59 @@ GEMINI_MODELS = [
     "gemini-3.5-flash",
     "gemini-3.1-flash-lite",
 ]
-OPENROUTER_CHAT_MODELS = [
+POPULAR_OPENROUTER_MODELS = [
     "google/gemini-2.5-flash",
+    "google/gemini-2.5-pro",
     "google/gemini-3.1-flash-lite",
     "google/gemini-3.5-flash",
+    "google/gemini-2.0-flash-exp:free",
+    "deepseek/deepseek-chat",
+    "deepseek/deepseek-r1",
     "openai/gpt-4o-mini",
-    "qwen/qwen3.5-flash-02-23",
-    "qwen/qwen3-30b-a3b-instruct-2507",
+    "openai/gpt-4o",
+    "openai/o3-mini",
+    "anthropic/claude-3.5-sonnet",
+    "anthropic/claude-3.5-haiku",
+    "anthropic/claude-3.7-sonnet",
+    "qwen/qwen-2.5-72b-instruct",
+    "qwen/qwen-2.5-32b-instruct",
+    "meta-llama/llama-3.3-70b-instruct",
+    "meta-llama/llama-3.3-70b-instruct:free",
+    "typesafe/jev-1.13",
+    "~typesafe/jev-latest",
 ]
+
+_CACHED_OPENROUTER_MODELS: list[str] = []
+
+
+def get_openrouter_models() -> list[str]:
+    global _CACHED_OPENROUTER_MODELS
+    if _CACHED_OPENROUTER_MODELS:
+        return _CACHED_OPENROUTER_MODELS
+    try:
+        resp = requests.get("https://openrouter.ai/api/v1/models", timeout=3.5)
+        if resp.status_code == 200:
+            data = resp.json().get("data", [])
+            all_ids = [m["id"] for m in data if "id" in m]
+            seen = set()
+            ordered = []
+            for m in POPULAR_OPENROUTER_MODELS:
+                if m not in seen:
+                    seen.add(m)
+                    ordered.append(m)
+            for m in sorted(all_ids):
+                if m not in seen:
+                    seen.add(m)
+                    ordered.append(m)
+            _CACHED_OPENROUTER_MODELS = ordered
+            return _CACHED_OPENROUTER_MODELS
+    except Exception:
+        pass
+    _CACHED_OPENROUTER_MODELS = list(POPULAR_OPENROUTER_MODELS)
+    return _CACHED_OPENROUTER_MODELS
+
+
+OPENROUTER_CHAT_MODELS = POPULAR_OPENROUTER_MODELS
 JEV_MODELS = ["typesafe/jev-1.13", "~typesafe/jev-latest"]
 
 # Modes
@@ -186,9 +231,15 @@ JEV_CONSENSUS_CRITERIA = {
 
 
 def models_for(task: str, provider: str) -> list[str]:
-    if task in ("judge", "consensus"):
-        return GEMINI_MODELS if provider == PROVIDER_GEMINI else JEV_MODELS
-    return GEMINI_MODELS if provider == PROVIDER_GEMINI else OPENROUTER_CHAT_MODELS
+    if provider == PROVIDER_GEMINI:
+        return list(GEMINI_MODELS)
+    return get_openrouter_models()
+
+
+def default_model_for(task: str, provider: str) -> str:
+    if provider == PROVIDER_GEMINI:
+        return GEMINI_MODELS[0]
+    return "google/gemini-2.5-flash"
 
 
 def is_jev_model(model: str) -> bool:
@@ -398,23 +449,49 @@ def _extract_json(text: str) -> dict[str, Any]:
     raise ValueError(f"No JSON object found in response: {text[:200]}")
 
 
-def openrouter_chat(api_key: str, model: str, system_prompt: str, user_prompt: str, timeout: int = 150):
-    payload = {
+def openrouter_chat(
+    api_key: str,
+    model: str,
+    system_prompt: str,
+    user_prompt: str,
+    expect_json: bool = True,
+    timeout: int = 150,
+) -> tuple[Any, dict[str, Any]]:
+    payload: dict[str, Any] = {
         "model": model,
         "messages": [
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt},
         ],
-        "response_format": {"type": "json_object"},
     }
-    resp = requests.post(OPENROUTER_CHAT_URL, headers=_headers(api_key), json=payload, timeout=timeout)
-    if resp.status_code >= 400:
-        raise RuntimeError(f"OpenRouter HTTP {resp.status_code}: {resp.text[:500]}")
-    data = resp.json()
-    content = data["choices"][0]["message"]["content"]
-    u = data.get("usage", {}) or {}
-    usage = usage_dict(u.get("prompt_tokens"), u.get("completion_tokens"), u.get("total_tokens"), u.get("cost"))
-    return _extract_json(content), usage
+    if expect_json:
+        payload["response_format"] = {"type": "json_object"}
+
+    last_err = None
+    for attempt in range(2):
+        try:
+            resp = requests.post(OPENROUTER_CHAT_URL, headers=_headers(api_key), json=payload, timeout=timeout)
+            if resp.status_code >= 400 and expect_json and "response_format" in payload:
+                # Some models on OpenRouter do not support response_format; retry without it and extract JSON from output
+                payload_no_rf = dict(payload)
+                del payload_no_rf["response_format"]
+                resp = requests.post(OPENROUTER_CHAT_URL, headers=_headers(api_key), json=payload_no_rf, timeout=timeout)
+
+            if resp.status_code >= 400:
+                raise RuntimeError(f"OpenRouter HTTP {resp.status_code}: {resp.text[:500]}")
+
+            data = resp.json()
+            content = data["choices"][0]["message"]["content"]
+            u = data.get("usage", {}) or {}
+            usage = usage_dict(u.get("prompt_tokens"), u.get("completion_tokens"), u.get("total_tokens"), u.get("cost"))
+            if expect_json:
+                return _extract_json(content), usage
+            return (content or "").strip(), usage
+        except Exception as e:
+            last_err = e
+            if attempt == 0:
+                time.sleep(1.5)
+    raise last_err
 
 
 def call_jev(api_key: str, model: str, state: dict[str, Any], questions: dict[str, Any], timeout: int = 150):
@@ -507,21 +584,25 @@ class FatwaApp:
 
     # -- clients -----------------------------------------------------------
 
-    def ensure_gemini(self):
-        if self._gemini_client is None:
+    def ensure_gemini(self, custom_key: str | None = None):
+        api_key = (custom_key or "").strip() or os.getenv(GEMINI_API_KEY_ENV, "").strip()
+        if not api_key:
+            raise RuntimeError(
+                f"{GEMINI_API_KEY_ENV} is not set. Put it in .env, export it, or enter it in Settings."
+            )
+        if self._gemini_client is None or getattr(self, "_gemini_key_used", None) != api_key:
             from google import genai
-
-            api_key = os.getenv(GEMINI_API_KEY_ENV)
-            if not api_key:
-                raise RuntimeError(
-                    f"{GEMINI_API_KEY_ENV} is not set. Put it in .env or export it."
-                )
             self._gemini_client = genai.Client(api_key=api_key)
+            self._gemini_key_used = api_key
         return self._gemini_client
 
-    def ensure_openrouter(self) -> str:
-        if self._openrouter_key is None:
-            self._openrouter_key = get_openrouter_key()
+    def ensure_openrouter(self, custom_key: str | None = None) -> str:
+        api_key = (custom_key or "").strip() or os.getenv(OPENROUTER_API_KEY_ENV, "").strip()
+        if not api_key:
+            raise RuntimeError(
+                f"{OPENROUTER_API_KEY_ENV} is not set. Put it in .env, export it, or enter it in Settings."
+            )
+        self._openrouter_key = api_key
         return self._openrouter_key
 
     # -- rewrite -----------------------------------------------------------
@@ -529,14 +610,23 @@ class FatwaApp:
     def rewrite_query(self, provider: str, model: str, query: str) -> tuple[QueryRewrite, dict[str, Any]]:
         if provider == PROVIDER_GEMINI:
             client = self.ensure_gemini()
-            response = client.models.generate_content(
-                model=model,
-                contents=f"{REWRITE_SYSTEM}\n\n{rewrite_user_prompt(query)}",
-                config={
-                    "response_mime_type": "application/json",
-                    "response_schema": QueryRewrite.model_json_schema(),
-                },
-            )
+            response = None
+            for attempt in range(3):
+                try:
+                    response = client.models.generate_content(
+                        model=model,
+                        contents=f"{REWRITE_SYSTEM}\n\n{rewrite_user_prompt(query)}",
+                        config={
+                            "response_mime_type": "application/json",
+                            "response_schema": QueryRewrite.model_json_schema(),
+                        },
+                    )
+                    break
+                except Exception:
+                    if attempt == 2:
+                        raise
+                    time.sleep(1.5 * (attempt + 1))
+
             um = getattr(response, "usage_metadata", None)
             usage = usage_dict(
                 getattr(um, "prompt_token_count", 0),
@@ -547,7 +637,12 @@ class FatwaApp:
 
         key = self.ensure_openrouter()
         data, usage = openrouter_chat(key, model, REWRITE_SYSTEM, rewrite_user_prompt(query))
-        return QueryRewrite.model_validate(data), usage
+        if isinstance(data, dict):
+            improved = data.get("improved_query") or data.get("improvedQuery") or data.get("query") or query
+            lang = data.get("language") or "Arabic"
+            changed = bool(data.get("changed", True))
+            return QueryRewrite(language=str(lang), improved_query=str(improved), changed=changed), usage
+        return QueryRewrite(language="Arabic", improved_query=query, changed=False), usage
 
     # -- candidate judging -------------------------------------------------
 
@@ -590,13 +685,50 @@ class FatwaApp:
         data, usage = openrouter_chat(
             key, model, judge_system_prompt(), judge_user_prompt(user_query, candidates, max_chars)
         )
-        parsed = JudgeResponse.model_validate(data)
-        out = {
-            int(j.candidate_id): FatwaJudgement(
-                verdict=j.verdict, confidence=j.confidence, answer=j.answer, explanation=j.explanation
-            )
-            for j in parsed.judgements
-        }
+        judgements_list = []
+        if isinstance(data, list):
+            judgements_list = data
+        elif isinstance(data, dict):
+            for k in ("judgements", "judgments", "candidates", "results"):
+                if k in data and isinstance(data[k], list):
+                    judgements_list = data[k]
+                    break
+            if not judgements_list and "candidate_id" in data:
+                judgements_list = [data]
+
+        out: dict[int, FatwaJudgement] = {}
+        for j in judgements_list:
+            if not isinstance(j, dict):
+                continue
+            cid = j.get("candidate_id")
+            if cid is None:
+                continue
+            try:
+                cid = int(cid)
+            except (ValueError, TypeError):
+                continue
+
+            verdict = str(j.get("verdict", "unknown")).strip().lower().replace("_", "-")
+            if verdict not in VERDICTS:
+                if "answer" in verdict:
+                    verdict = "answers-it"
+                elif "related" in verdict:
+                    verdict = "related-only"
+                elif "unrelated" in verdict:
+                    verdict = "unrelated"
+                else:
+                    verdict = "unknown"
+
+            conf = str(j.get("confidence", "medium")).lower()
+            ans = str(j.get("answer", "")).strip()
+            exp = str(j.get("explanation", "")).strip()
+            out[cid] = FatwaJudgement(verdict=verdict, confidence=conf, answer=ans, explanation=exp)
+
+        for row in candidates.itertuples(index=False):
+            fid = int(row.fatwa_id)
+            if fid not in out:
+                out[fid] = FatwaJudgement(verdict="unknown", confidence="low", answer="", explanation="Unclassified")
+
         return out, usage
 
     def _judge_jev(self, key, model, user_query, candidates, max_chars):
@@ -677,14 +809,23 @@ class FatwaApp:
             "- 'disagree': Scholars hold conflicting rulings (e.g. permissible vs prohibited, obligatory vs recommended).\n"
             "Provide a clear, respectful Arabic explanation of the agreement or divergence."
         )
-        response = client.models.generate_content(
-            model=model,
-            contents=prompt,
-            config={
-                "response_mime_type": "application/json",
-                "response_schema": ConsensusClassificationModel.model_json_schema(),
-            },
-        )
+        response = None
+        for attempt in range(3):
+            try:
+                response = client.models.generate_content(
+                    model=model,
+                    contents=prompt,
+                    config={
+                        "response_mime_type": "application/json",
+                        "response_schema": ConsensusClassificationModel.model_json_schema(),
+                    },
+                )
+                break
+            except Exception:
+                if attempt == 2:
+                    raise
+                time.sleep(1.5 * (attempt + 1))
+
         um = getattr(response, "usage_metadata", None)
         usage = usage_dict(
             getattr(um, "prompt_token_count", 0),
@@ -747,16 +888,38 @@ class FatwaApp:
         sys_prompt = (
             "You are an Islamic jurisprudence scholar analysis assistant. "
             "Analyze the retrieved scholarly fatwas and determine their consensus level on the user question. "
-            "Return a JSON object with keys: 'consensus' ('agree'|'partially-agree'|'disagree'), 'confidence' (float), and 'explanation' (Arabic text)."
+            "Return a JSON object with keys:\n"
+            "- 'consensus': exactly one of 'agree', 'partially-agree', 'disagree'\n"
+            "- 'confidence': float between 0.0 and 1.0\n"
+            "- 'explanation': concise Arabic explanation analyzing consensus or divergence."
         )
         user_prompt = f"Question: {user_query}\n\nFatwas:\n{self._format_fatwas_for_synthesis(candidates)}"
         data, usage = openrouter_chat(key, model, sys_prompt, user_prompt)
-        parsed = ConsensusClassificationModel.model_validate(data)
-        choice = parsed.consensus if parsed.consensus in CONSENSUS_VERDICTS else "unknown"
+
+        choice = "unknown"
+        conf = 1.0
+        exp = ""
+        if isinstance(data, dict):
+            raw_c = str(data.get("consensus", "")).strip().lower().replace("_", "-")
+            if raw_c in CONSENSUS_VERDICTS:
+                choice = raw_c
+            elif "part" in raw_c and "agree" in raw_c:
+                choice = CONSENSUS_PARTIAL
+            elif "agree" in raw_c:
+                choice = CONSENSUS_AGREE
+            elif "disagree" in raw_c or "diff" in raw_c:
+                choice = CONSENSUS_DISAGREE
+
+            try:
+                conf = float(data.get("confidence", 1.0))
+            except (ValueError, TypeError):
+                conf = 1.0
+            exp = str(data.get("explanation", "")).strip()
+
         return ConsensusVerdict(
             consensus=choice,
-            confidence=parsed.confidence,
-            explanation=parsed.explanation,
+            confidence=conf,
+            explanation=exp,
         ), usage
 
     def summarize_opinions_gemini(
@@ -769,7 +932,16 @@ class FatwaApp:
             "المطلوب: قدم خلاصة فقهية جامعة وموجزة ودقيقة باللغة العربية تبين موقف كل شيخ أو هيئة إفتاء من المسألة. "
             "اذكر أوجه الاتفاق والاختلاف (إن وجدت)، وانسب كل قول إلى قائله بأمانة ودقة واختصار، وبأسلوب علمي رصين."
         )
-        response = client.models.generate_content(model=model, contents=prompt)
+        response = None
+        for attempt in range(3):
+            try:
+                response = client.models.generate_content(model=model, contents=prompt)
+                break
+            except Exception:
+                if attempt == 2:
+                    raise
+                time.sleep(1.5 * (attempt + 1))
+
         um = getattr(response, "usage_metadata", None)
         usage = usage_dict(
             getattr(um, "prompt_token_count", 0),
@@ -777,6 +949,30 @@ class FatwaApp:
             getattr(um, "total_token_count", None),
         )
         return response.text.strip(), usage
+
+    def summarize_opinions_openrouter(
+        self, model: str, user_query: str, candidates: pd.DataFrame
+    ) -> tuple[str, dict[str, Any]]:
+        key = self.ensure_openrouter()
+        sys_prompt = (
+            "أنت باحث ومساعد متخصص في الفقه الإسلامي المقارن. "
+            "مهمتك صياغة خلاصة فقهية موجزة ودقيقة باللغة العربية تبين موقف كل شيخ أو هيئة إفتاء من المسألة المعروضة في الفتاوى المرفقة. "
+            "اذكر أوجه الاتفاق والاختلاف (إن وجدت)، وانسب كل قول إلى قائله بأمانة ودقة واختصار، وبأسلوب علمي رصين."
+        )
+        user_prompt = (
+            f"السؤال: {user_query}\n\n"
+            f"فتاوى العلماء المعثور عليها:\n{self._format_fatwas_for_synthesis(candidates)}\n\n"
+            "المطلوب: قدم الخلاصة الفقهية الجامعة مع نسبة كل حكم إلى صاحبه."
+        )
+        content, usage = openrouter_chat(key, model, sys_prompt, user_prompt, expect_json=False)
+        return content.strip(), usage
+
+    def summarize_opinions(
+        self, provider: str, model: str, user_query: str, candidates: pd.DataFrame
+    ) -> tuple[str, dict[str, Any]]:
+        if provider == PROVIDER_GEMINI:
+            return self.summarize_opinions_gemini(model, user_query, candidates)
+        return self.summarize_opinions_openrouter(model, user_query, candidates)
 
     # -- retrieval / reranking --------------------------------------------
 
@@ -880,6 +1076,7 @@ class FatwaApp:
         consensus_provider: str,
         consensus_model: str,
         summary_enabled: bool,
+        summary_provider: str,
         summary_model: str,
         retrieve_k: int,
         rerank_pool: int,
@@ -887,10 +1084,19 @@ class FatwaApp:
         max_candidate_chars: int,
         min_rerank_score: float | None,
         filter_verdicts: list[str],
+        gemini_api_key: str = "",
+        openrouter_api_key: str = "",
     ):
         steps: list[Stat] = []
         errors: list[str] = []
         t_start = time.perf_counter()
+
+        if gemini_api_key and gemini_api_key.strip():
+            os.environ[GEMINI_API_KEY_ENV] = gemini_api_key.strip()
+            self._gemini_client = None
+        if openrouter_api_key and openrouter_api_key.strip():
+            os.environ[OPENROUTER_API_KEY_ENV] = openrouter_api_key.strip()
+            self._openrouter_key = None
 
         user_query = (user_query or "").strip()
         if not user_query:
@@ -1014,21 +1220,21 @@ class FatwaApp:
         else:
             steps.append(Stat("Consensus classification", 0.0, note="disabled" if not consensus_enabled else "insufficient results"))
 
-        # -- comparative summary (Gemini only)
+        # -- comparative summary
         summary_text: str | None = None
         if summary_enabled and len(top_n) > 0:
             t0 = time.perf_counter()
             try:
-                summary_text, usage = self.summarize_opinions_gemini(summary_model, user_query, top_n)
+                summary_text, usage = self.summarize_opinions(summary_provider, summary_model, user_query, top_n)
                 steps.append(
                     Stat("Comparative summary", time.perf_counter() - t0, **usage,
-                         provider=PROVIDER_GEMINI, model=summary_model, note=f"{len(summary_text)} chars")
+                         provider=summary_provider, model=summary_model, note=f"{len(summary_text)} chars")
                 )
             except Exception as e:
                 dt = time.perf_counter() - t0
-                msg = f"Comparative summary failed ({summary_model}): {type(e).__name__}: {e}"
+                msg = f"Comparative summary failed ({summary_provider} / {summary_model}): {type(e).__name__}: {e}"
                 errors.append(msg)
-                steps.append(Stat("Comparative summary", dt, provider=PROVIDER_GEMINI, model=summary_model, note="failed"))
+                steps.append(Stat("Comparative summary", dt, provider=summary_provider, model=summary_model, note="failed"))
         else:
             steps.append(Stat("Comparative summary", 0.0, note="disabled" if not summary_enabled else "no candidates"))
 
@@ -1475,10 +1681,12 @@ footer { display:none !important; }
 .fq-mark .gold { fill:var(--fq-gold); stroke:none; }
 .fq-name { font-weight:800; font-size:1.45rem; letter-spacing:-.02em; line-height:1.1; color:var(--fq-ink); }
 .fq-tagline { font-size:.82rem; color:var(--fq-muted); margin-top:3px; }
-#fq-settings-btn { flex:none !important; width:auto !important; min-width:0 !important; }
-#fq-settings-btn { border-radius:999px; background:var(--fq-surface); border:1px solid var(--fq-line);
-  color:var(--fq-ink) !important; font-weight:600; padding:9px 18px !important; font-size:.9rem !important; box-shadow:var(--fq-shadow); }
-#fq-settings-btn:hover { border-color:var(--fq-accent); color:var(--fq-accent); }
+#fq-settings-btn, #fq-theme-btn { flex:none !important; width:auto !important; min-width:0 !important; }
+#fq-settings-btn, #fq-theme-btn { border-radius:999px; background:var(--fq-surface); border:1px solid var(--fq-line);
+  color:var(--fq-ink) !important; font-weight:600; padding:9px 16px !important; font-size:.9rem !important; box-shadow:var(--fq-shadow); cursor:pointer; }
+#fq-settings-btn:hover, #fq-theme-btn:hover { border-color:var(--fq-accent); color:var(--fq-accent); }
+.fq-side-title { font-weight:800; font-size:1.35rem; color:var(--fq-ink); margin-bottom:4px; }
+.fq-side-sub { font-size:.85rem; color:var(--fq-muted); margin-bottom:14px; }
 
 /* ---- search controls & mode selector ---- */
 #fq-search-wrap { background:var(--fq-surface); border:1px solid var(--fq-line); border-radius:20px;
@@ -1666,6 +1874,42 @@ def build_ui(app: FatwaApp) -> gr.Blocks:
     with gr.Blocks(title="Fatwa Search — Multi-Scholar RAG", theme=THEME, css=CSS) as demo:
         sidebar_open = gr.State(False)
 
+        # ---- theme initialization script -----------------------------------
+        gr.HTML("""
+        <script>
+        (function() {
+            function updateTheme() {
+                var saved = null;
+                try { saved = localStorage.getItem('fq-theme-mode'); } catch(e) {}
+                var isDark = true;
+                if (saved === 'light') {
+                    isDark = false;
+                } else if (saved === 'dark') {
+                    isDark = true;
+                } else {
+                    isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                }
+                document.body.classList.toggle('dark', isDark);
+                document.documentElement.classList.toggle('dark', isDark);
+                var gApp = document.querySelector('gradio-app');
+                if (gApp) gApp.classList.toggle('dark', isDark);
+                var btn = document.getElementById('fq-theme-btn');
+                if (btn) {
+                    var b = btn.tagName === 'BUTTON' ? btn : (btn.querySelector('button') || btn);
+                    b.innerText = isDark ? "☀️ Light" : "🌙 Dark";
+                }
+            }
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', updateTheme);
+            } else {
+                updateTheme();
+            }
+            setTimeout(updateTheme, 150);
+            setTimeout(updateTheme, 600);
+        })();
+        </script>
+        """, visible=False)
+
         # ---- top bar -------------------------------------------------------
         with gr.Row(elem_id="fq-top"):
             gr.HTML(
@@ -1673,6 +1917,7 @@ def build_ui(app: FatwaApp) -> gr.Blocks:
                 f"<div class='fq-tagline'>{n_fatwas:,} fatwas indexed across {len(available_scholars)} scholarly sources · semantic retrieval + reranking + AI synthesis</div></div></div>",
                 elem_classes="fq-flat",
             )
+            theme_btn = gr.Button("☀️ Light", elem_id="fq-theme-btn", size="sm", scale=0)
             settings_btn = gr.Button("⚙  Settings", elem_id="fq-settings-btn", size="sm", scale=0)
 
         # ---- search box ----------------------------------------------------
@@ -1763,43 +2008,63 @@ def build_ui(app: FatwaApp) -> gr.Blocks:
                 "<div class='fq-side-sub'>Configure AI features, models, retrieval pools and filters.</div>",
                 elem_classes="fq-flat",
             )
+            with gr.Accordion("API Keys (Optional Overrides)", open=True):
+                gemini_key_input = gr.Textbox(
+                    value=os.getenv(GEMINI_API_KEY_ENV, ""),
+                    type="password",
+                    label="Gemini API Key",
+                    placeholder="AIzaSy... (leave blank to use env var)",
+                    info="Used when Provider is Gemini. Overrides GEMINI_API_KEY.",
+                )
+                openrouter_key_input = gr.Textbox(
+                    value=os.getenv(OPENROUTER_API_KEY_ENV, ""),
+                    type="password",
+                    label="OpenRouter API Key",
+                    placeholder="sk-or-v1-... (leave blank to use env var)",
+                    info="Used when Provider is OpenRouter. Overrides OPENROUTER_API_KEY.",
+                )
             with gr.Accordion("Query rewrite", open=True):
                 rewrite_enabled = gr.Checkbox(
-                    value=bool(os.getenv(GEMINI_API_KEY_ENV)), label="Rewrite / translate the question",
+                    value=bool(os.getenv(GEMINI_API_KEY_ENV) or os.getenv(OPENROUTER_API_KEY_ENV)),
+                    label="Rewrite / translate the question",
                     info="Turns any language into a clean Arabic search query.",
                 )
                 rewrite_provider = gr.Radio(PROVIDERS, value=PROVIDER_GEMINI, label="Provider")
                 rewrite_model = gr.Dropdown(
-                    models_for("rewrite", PROVIDER_GEMINI), value=GEMINI_MODELS[0],
-                    label="Model", allow_custom_value=True,
+                    models_for("rewrite", PROVIDER_GEMINI), value=default_model_for("rewrite", PROVIDER_GEMINI),
+                    label="Model (Search or enter any slug)", allow_custom_value=True, filterable=True,
                 )
             with gr.Accordion("Fatwa Verdict Judge", open=True):
                 judge_enabled = gr.Checkbox(
-                    value=bool(os.getenv(GEMINI_API_KEY_ENV)), label="Judge each result",
+                    value=bool(os.getenv(GEMINI_API_KEY_ENV) or os.getenv(OPENROUTER_API_KEY_ENV)),
+                    label="Judge each result",
                     info="An LLM checks whether each fatwa answers the question.",
                 )
                 judge_provider = gr.Radio(PROVIDERS, value=PROVIDER_GEMINI, label="Provider")
                 judge_model = gr.Dropdown(
-                    models_for("judge", PROVIDER_GEMINI), value=GEMINI_MODELS[0],
-                    label="Model", allow_custom_value=True,
+                    models_for("judge", PROVIDER_GEMINI), value=default_model_for("judge", PROVIDER_GEMINI),
+                    label="Model (Search or enter any slug)", allow_custom_value=True, filterable=True,
                 )
             with gr.Accordion("AI Consensus & Summary", open=True):
                 consensus_enabled = gr.Checkbox(
-                    value=bool(os.getenv(GEMINI_API_KEY_ENV)), label="Consensus Classification",
-                    info="Classify whether scholars agree, partially agree, or disagree (Gemini or JEV).",
+                    value=bool(os.getenv(GEMINI_API_KEY_ENV) or os.getenv(OPENROUTER_API_KEY_ENV)),
+                    label="Consensus Classification",
+                    info="Classify whether scholars agree, partially agree, or disagree.",
                 )
                 consensus_provider = gr.Radio(PROVIDERS, value=PROVIDER_GEMINI, label="Consensus Provider")
                 consensus_model = gr.Dropdown(
-                    models_for("consensus", PROVIDER_GEMINI), value=GEMINI_MODELS[0],
-                    label="Consensus Model", allow_custom_value=True,
+                    models_for("consensus", PROVIDER_GEMINI), value=default_model_for("consensus", PROVIDER_GEMINI),
+                    label="Consensus Model (Search or enter any slug)", allow_custom_value=True, filterable=True,
                 )
                 summary_enabled = gr.Checkbox(
-                    value=bool(os.getenv(GEMINI_API_KEY_ENV)), label="Comparative Summary (Gemini)",
+                    value=bool(os.getenv(GEMINI_API_KEY_ENV) or os.getenv(OPENROUTER_API_KEY_ENV)),
+                    label="Comparative Summary",
                     info="Generates an Arabic synthesis comparing what the scholars say.",
                 )
+                summary_provider = gr.Radio(PROVIDERS, value=PROVIDER_GEMINI, label="Summary Provider")
                 summary_model = gr.Dropdown(
-                    models_for("rewrite", PROVIDER_GEMINI), value=GEMINI_MODELS[0],
-                    label="Summary Model (Gemini)", allow_custom_value=True,
+                    models_for("summary", PROVIDER_GEMINI), value=default_model_for("summary", PROVIDER_GEMINI),
+                    label="Summary Model (Search or enter any slug)", allow_custom_value=True, filterable=True,
                 )
             with gr.Accordion("Retrieval & Thresholds", open=False):
                 retrieve_k = gr.Slider(5, MAX_RETRIEVE_K, value=DEFAULT_RETRIEVE_K, step=1,
@@ -1833,9 +2098,10 @@ def build_ui(app: FatwaApp) -> gr.Blocks:
             rewrite_enabled, rewrite_provider, rewrite_model,
             judge_enabled, judge_provider, judge_model,
             consensus_enabled, consensus_provider, consensus_model,
-            summary_enabled, summary_model,
+            summary_enabled, summary_provider, summary_model,
             retrieve_k, rerank_pool, show_n,
             max_candidate_chars, min_rerank_score, filter_verdicts,
+            gemini_key_input, openrouter_key_input,
         ]
         outputs = [query_info, stats_html, retrieval_html, rerank_html, results_html, error_text]
 
@@ -1863,6 +2129,25 @@ def build_ui(app: FatwaApp) -> gr.Blocks:
         clear_btn.click(
             lambda: ("", EMPTY_QUERY, EMPTY_PIPELINE, EMPTY_TABLE, EMPTY_TABLE, EMPTY_RESULTS, ""),
             outputs=[query] + outputs, show_progress="hidden",
+        )
+
+        theme_btn.click(
+            fn=None,
+            inputs=[],
+            outputs=[],
+            js="""() => {
+                const isDarkNow = !document.body.classList.contains('dark');
+                document.body.classList.toggle('dark', isDarkNow);
+                document.documentElement.classList.toggle('dark', isDarkNow);
+                const gApp = document.querySelector('gradio-app');
+                if (gApp) gApp.classList.toggle('dark', isDarkNow);
+                try { localStorage.setItem('fq-theme-mode', isDarkNow ? 'dark' : 'light'); } catch(e) {}
+                const btn = document.getElementById('fq-theme-btn');
+                if (btn) {
+                    const b = btn.tagName === 'BUTTON' ? btn : (btn.querySelector('button') || btn);
+                    b.innerText = isDarkNow ? "☀️ Light" : "🌙 Dark";
+                }
+            }""",
         )
 
         settings_btn.click(
@@ -1897,21 +2182,25 @@ def build_ui(app: FatwaApp) -> gr.Blocks:
             inputs=consensus_enabled, outputs=[consensus_provider, consensus_model], show_progress="hidden",
         )
         summary_enabled.change(
-            lambda e: gr.update(interactive=e),
-            inputs=summary_enabled, outputs=summary_model, show_progress="hidden",
+            lambda e: (gr.update(interactive=e), gr.update(interactive=e)),
+            inputs=summary_enabled, outputs=[summary_provider, summary_model], show_progress="hidden",
         )
 
         rewrite_provider.change(
-            lambda p: gr.update(choices=models_for("rewrite", p), value=models_for("rewrite", p)[0]),
+            lambda p: gr.update(choices=models_for("rewrite", p), value=default_model_for("rewrite", p)),
             inputs=rewrite_provider, outputs=rewrite_model,
         )
         judge_provider.change(
-            lambda p: gr.update(choices=models_for("judge", p), value=models_for("judge", p)[0]),
+            lambda p: gr.update(choices=models_for("judge", p), value=default_model_for("judge", p)),
             inputs=judge_provider, outputs=judge_model,
         )
         consensus_provider.change(
-            lambda p: gr.update(choices=models_for("consensus", p), value=models_for("consensus", p)[0]),
+            lambda p: gr.update(choices=models_for("consensus", p), value=default_model_for("consensus", p)),
             inputs=consensus_provider, outputs=consensus_model,
+        )
+        summary_provider.change(
+            lambda p: gr.update(choices=models_for("summary", p), value=default_model_for("summary", p)),
+            inputs=summary_provider, outputs=summary_model,
         )
 
         retrieve_k.change(
@@ -1925,10 +2214,10 @@ def build_ui(app: FatwaApp) -> gr.Blocks:
 
         def reset_settings():
             return (
-                True, PROVIDER_GEMINI, GEMINI_MODELS[0],
-                True, PROVIDER_GEMINI, GEMINI_MODELS[0],
-                True, PROVIDER_GEMINI, GEMINI_MODELS[0],
-                True, GEMINI_MODELS[0],
+                True, PROVIDER_GEMINI, default_model_for("rewrite", PROVIDER_GEMINI),
+                True, PROVIDER_GEMINI, default_model_for("judge", PROVIDER_GEMINI),
+                True, PROVIDER_GEMINI, default_model_for("consensus", PROVIDER_GEMINI),
+                True, PROVIDER_GEMINI, default_model_for("summary", PROVIDER_GEMINI),
                 DEFAULT_RETRIEVE_K, DEFAULT_RERANK_POOL, DEFAULT_SHOW_N,
                 DEFAULT_MAX_CANDIDATE_CHARS, None, list(VERDICTS),
             )
@@ -1939,10 +2228,11 @@ def build_ui(app: FatwaApp) -> gr.Blocks:
                 rewrite_enabled, rewrite_provider, rewrite_model,
                 judge_enabled, judge_provider, judge_model,
                 consensus_enabled, consensus_provider, consensus_model,
-                summary_enabled, summary_model,
+                summary_enabled, summary_provider, summary_model,
                 retrieve_k, rerank_pool, show_n,
                 max_candidate_chars, min_rerank_score, filter_verdicts,
             ],
+            show_progress="hidden",
         )
 
     return demo
