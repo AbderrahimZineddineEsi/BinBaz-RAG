@@ -76,11 +76,17 @@ load_env_files()
 # ---------------------------------------------------------------------------
 
 DATA_REPO_ID = os.environ.get("FATWA_DATA_REPO", "ZenoAbderrahim/binbaz_fatwas_rag")
-DATA_FILES = [
+MULTI_SCHOLAR_DATA_FILES = [
+    "multi_scholar_clean.csv",
+    "qwen3_06b_multi_scholar_embeddings.pt",
+    "multi_scholar_metadata.json",
+]
+BINBAZ_DATA_FILES = [
     "binbaz_clean.csv",
     "qwen3_06b_title_answer_embeddings.pt",
     "embedding_metadata.json",
 ]
+DATA_FILES = MULTI_SCHOLAR_DATA_FILES
 
 EMBEDDER_MODEL_NAME = "Qwen/Qwen3-Embedding-0.6B"
 RERANKER_MODEL_NAME = "ALJIACHI/Mizan-Rerank-V2"
@@ -1951,11 +1957,49 @@ def ensure_data(data_dir: Path) -> None:
     from huggingface_hub import hf_hub_download
 
     data_dir.mkdir(parents=True, exist_ok=True)
-    for name in DATA_FILES:
-        if (data_dir / name).exists():
+
+    # Check if multi-scholar assets are already in place
+    has_multi = (data_dir / "multi_scholar_clean.csv").exists() and (
+        data_dir / "qwen3_06b_multi_scholar_embeddings.pt"
+    ).exists()
+    if has_multi:
+        return
+
+    # Check if Bin Baz assets are already in place
+    has_binbaz = (data_dir / "binbaz_clean.csv").exists() and (
+        data_dir / "qwen3_06b_title_answer_embeddings.pt"
+    ).exists()
+
+    # Try downloading multi-scholar files from DATA_REPO_ID first
+    print(f"Checking for multi-scholar assets in Hugging Face dataset '{DATA_REPO_ID}'...")
+    multi_success = True
+    for name in MULTI_SCHOLAR_DATA_FILES:
+        target = data_dir / name
+        if target.exists():
             continue
-        print(f"Downloading {name} from {DATA_REPO_ID} ...")
-        hf_hub_download(repo_id=DATA_REPO_ID, repo_type="dataset", filename=name, local_dir=data_dir)
+        try:
+            print(f"Downloading {name} from {DATA_REPO_ID} ...")
+            hf_hub_download(repo_id=DATA_REPO_ID, repo_type="dataset", filename=name, local_dir=data_dir)
+        except Exception as e:
+            print(f"Notice: Could not download {name} from {DATA_REPO_ID} ({type(e).__name__}).")
+            multi_success = False
+            break
+
+    if multi_success and (data_dir / "multi_scholar_clean.csv").exists():
+        print("Successfully fetched multi-scholar assets from Hugging Face.")
+        return
+
+    # If multi-scholar files were not found on HF repo and not already on disk, fall back to Bin Baz
+    if not has_binbaz:
+        print(f"Falling back to Bin Baz base dataset in '{DATA_REPO_ID}'...")
+        for name in BINBAZ_DATA_FILES:
+            if (data_dir / name).exists():
+                continue
+            try:
+                print(f"Downloading {name} from {DATA_REPO_ID} ...")
+                hf_hub_download(repo_id=DATA_REPO_ID, repo_type="dataset", filename=name, local_dir=data_dir)
+            except Exception as e:
+                print(f"Warning: Failed to download {name}: {e}")
 
 
 def default_device(requested: str) -> str:

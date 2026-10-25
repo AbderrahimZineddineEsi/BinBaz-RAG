@@ -13,6 +13,7 @@ venv/
 # Data is downloaded from Hugging Face on first run
 data/*
 !data/.gitkeep
+kaggle_embedding_outputs/
 
 # OS / editor
 .DS_Store
