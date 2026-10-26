@@ -1,0 +1,2410 @@
+{
+  "laya_multilingual": {
+    "1": {
+      "verdict": "does-not-answer",
+      "confidence": 0.3979,
+      "latency_s": 3.331836444005603,
+      "cost": 0.0
+    },
+    "2": {
+      "verdict": "does-not-answer",
+      "confidence": 0.1738,
+      "latency_s": 0.1986369589867536,
+      "cost": 0.0
+    },
+    "3": {
+      "verdict": "does-not-answer",
+      "confidence": 0.5081,
+      "latency_s": 0.15421091299504042,
+      "cost": 0.0
+    },
+    "4": {
+      "verdict": "does-not-answer",
+      "confidence": 0.5738,
+      "latency_s": 0.2717730849981308,
+      "cost": 0.0
+    },
+    "5": {
+      "verdict": "does-not-answer",
+      "confidence": 0.5388,
+      "latency_s": 0.2721008820226416,
+      "cost": 0.0
+    },
+    "6": {
+      "verdict": "does-not-answer",
+      "confidence": 0.1585,
+      "latency_s": 0.16558959701796994,
+      "cost": 0.0
+    },
+    "7": {
+      "verdict": "does-not-answer",
+      "confidence": 0.6702,
+      "latency_s": 0.9793522320105694,
+      "cost": 0.0
+    },
+    "8": {
+      "verdict": "does-not-answer",
+      "confidence": 0.1036,
+      "latency_s": 0.7008964940032456,
+      "cost": 0.0
+    },
+    "9": {
+      "verdict": "does-not-answer",
+      "confidence": 0.4832,
+      "latency_s": 0.27224825700977817,
+      "cost": 0.0
+    },
+    "10": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9107,
+      "latency_s": 0.7210286670015194,
+      "cost": 0.0
+    },
+    "11": {
+      "verdict": "does-not-answer",
+      "confidence": 0.81,
+      "latency_s": 0.15833210200071335,
+      "cost": 0.0
+    },
+    "12": {
+      "verdict": "does-not-answer",
+      "confidence": 0.5444,
+      "latency_s": 0.3807961700076703,
+      "cost": 0.0
+    },
+    "13": {
+      "verdict": "does-not-answer",
+      "confidence": 0.7829,
+      "latency_s": 0.2742878550197929,
+      "cost": 0.0
+    },
+    "14": {
+      "verdict": "does-not-answer",
+      "confidence": 0.349,
+      "latency_s": 0.22895300699747168,
+      "cost": 0.0
+    },
+    "15": {
+      "verdict": "does-not-answer",
+      "confidence": 0.0653,
+      "latency_s": 0.22788521499023773,
+      "cost": 0.0
+    },
+    "16": {
+      "verdict": "does-not-answer",
+      "confidence": 0.5709,
+      "latency_s": 0.49200980097521096,
+      "cost": 0.0
+    },
+    "17": {
+      "verdict": "does-not-answer",
+      "confidence": 0.8311,
+      "latency_s": 0.15789427200797945,
+      "cost": 0.0
+    },
+    "18": {
+      "verdict": "answers-it",
+      "confidence": 0.0042,
+      "latency_s": 0.15172866301145405,
+      "cost": 0.0
+    },
+    "19": {
+      "verdict": "does-not-answer",
+      "confidence": 0.3206,
+      "latency_s": 0.7107344130054116,
+      "cost": 0.0
+    },
+    "20": {
+      "verdict": "does-not-answer",
+      "confidence": 0.313,
+      "latency_s": 0.23558873200090602,
+      "cost": 0.0
+    },
+    "21": {
+      "verdict": "does-not-answer",
+      "confidence": 0.326,
+      "latency_s": 0.3952037600101903,
+      "cost": 0.0
+    },
+    "22": {
+      "verdict": "answers-it",
+      "confidence": 0.0677,
+      "latency_s": 0.5066060470126104,
+      "cost": 0.0
+    },
+    "23": {
+      "verdict": "answers-it",
+      "confidence": 0.0889,
+      "latency_s": 0.38082887799828313,
+      "cost": 0.0
+    },
+    "24": {
+      "verdict": "answers-it",
+      "confidence": 0.012,
+      "latency_s": 0.4944227370142471,
+      "cost": 0.0
+    },
+    "25": {
+      "verdict": "does-not-answer",
+      "confidence": 0.0003,
+      "latency_s": 0.233369252004195,
+      "cost": 0.0
+    },
+    "26": {
+      "verdict": "does-not-answer",
+      "confidence": 0.1594,
+      "latency_s": 0.16463117802049965,
+      "cost": 0.0
+    },
+    "27": {
+      "verdict": "does-not-answer",
+      "confidence": 0.1899,
+      "latency_s": 0.7363221010018606,
+      "cost": 0.0
+    },
+    "28": {
+      "verdict": "does-not-answer",
+      "confidence": 0.3112,
+      "latency_s": 0.23669424100080505,
+      "cost": 0.0
+    },
+    "29": {
+      "verdict": "answers-it",
+      "confidence": 0.0016,
+      "latency_s": 0.8816858259961009,
+      "cost": 0.0
+    },
+    "30": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9271,
+      "latency_s": 0.1521714270056691,
+      "cost": 0.0
+    },
+    "31": {
+      "verdict": "does-not-answer",
+      "confidence": 0.2172,
+      "latency_s": 0.2942632720223628,
+      "cost": 0.0
+    },
+    "32": {
+      "verdict": "does-not-answer",
+      "confidence": 0.0581,
+      "latency_s": 0.1699971070047468,
+      "cost": 0.0
+    },
+    "33": {
+      "verdict": "answers-it",
+      "confidence": 0.015,
+      "latency_s": 0.17087497501051985,
+      "cost": 0.0
+    },
+    "34": {
+      "verdict": "answers-it",
+      "confidence": 0.1881,
+      "latency_s": 0.27894685600767843,
+      "cost": 0.0
+    },
+    "35": {
+      "verdict": "does-not-answer",
+      "confidence": 0.0271,
+      "latency_s": 0.7078174750204198,
+      "cost": 0.0
+    },
+    "36": {
+      "verdict": "does-not-answer",
+      "confidence": 0.1595,
+      "latency_s": 0.7114368919865228,
+      "cost": 0.0
+    },
+    "37": {
+      "verdict": "does-not-answer",
+      "confidence": 0.2422,
+      "latency_s": 0.2768089210148901,
+      "cost": 0.0
+    },
+    "38": {
+      "verdict": "does-not-answer",
+      "confidence": 0.6829,
+      "latency_s": 0.23278934598783962,
+      "cost": 0.0
+    },
+    "39": {
+      "verdict": "answers-it",
+      "confidence": 0.0057,
+      "latency_s": 0.2314413519925438,
+      "cost": 0.0
+    },
+    "40": {
+      "verdict": "does-not-answer",
+      "confidence": 0.0596,
+      "latency_s": 0.38193701999261975,
+      "cost": 0.0
+    },
+    "41": {
+      "verdict": "does-not-answer",
+      "confidence": 0.0005,
+      "latency_s": 0.17001857102150097,
+      "cost": 0.0
+    },
+    "42": {
+      "verdict": "does-not-answer",
+      "confidence": 0.513,
+      "latency_s": 0.15696423602639697,
+      "cost": 0.0
+    },
+    "43": {
+      "verdict": "does-not-answer",
+      "confidence": 0.4108,
+      "latency_s": 0.1578089730173815,
+      "cost": 0.0
+    },
+    "44": {
+      "verdict": "does-not-answer",
+      "confidence": 0.651,
+      "latency_s": 0.23348944599274546,
+      "cost": 0.0
+    },
+    "45": {
+      "verdict": "does-not-answer",
+      "confidence": 0.1796,
+      "latency_s": 0.16344904602738097,
+      "cost": 0.0
+    },
+    "46": {
+      "verdict": "does-not-answer",
+      "confidence": 0.7644,
+      "latency_s": 0.10668389999773353,
+      "cost": 0.0
+    },
+    "47": {
+      "verdict": "answers-it",
+      "confidence": 0.007,
+      "latency_s": 0.23599538000416942,
+      "cost": 0.0
+    },
+    "48": {
+      "verdict": "does-not-answer",
+      "confidence": 0.0,
+      "latency_s": 0.39647998500731774,
+      "cost": 0.0
+    },
+    "49": {
+      "verdict": "does-not-answer",
+      "confidence": 0.1717,
+      "latency_s": 0.49684959900332615,
+      "cost": 0.0
+    },
+    "50": {
+      "verdict": "does-not-answer",
+      "confidence": 0.1434,
+      "latency_s": 0.7156859739916399,
+      "cost": 0.0
+    },
+    "51": {
+      "verdict": "does-not-answer",
+      "confidence": 0.0244,
+      "latency_s": 0.8816962389973924,
+      "cost": 0.0
+    },
+    "52": {
+      "verdict": "does-not-answer",
+      "confidence": 0.366,
+      "latency_s": 0.49695523001719266,
+      "cost": 0.0
+    },
+    "53": {
+      "verdict": "answers-it",
+      "confidence": 0.3017,
+      "latency_s": 0.2863476409984287,
+      "cost": 0.0
+    },
+    "54": {
+      "verdict": "does-not-answer",
+      "confidence": 0.2594,
+      "latency_s": 0.1710021669859998,
+      "cost": 0.0
+    },
+    "55": {
+      "verdict": "does-not-answer",
+      "confidence": 0.0447,
+      "latency_s": 0.23333317099604756,
+      "cost": 0.0
+    },
+    "56": {
+      "verdict": "does-not-answer",
+      "confidence": 0.8992,
+      "latency_s": 0.16013719100737944,
+      "cost": 0.0
+    },
+    "57": {
+      "verdict": "does-not-answer",
+      "confidence": 0.0508,
+      "latency_s": 0.17055661699851044,
+      "cost": 0.0
+    },
+    "58": {
+      "verdict": "does-not-answer",
+      "confidence": 0.0276,
+      "latency_s": 0.5826308950199746,
+      "cost": 0.0
+    },
+    "59": {
+      "verdict": "does-not-answer",
+      "confidence": 0.7078,
+      "latency_s": 0.23570273100631312,
+      "cost": 0.0
+    },
+    "60": {
+      "verdict": "does-not-answer",
+      "confidence": 0.0,
+      "latency_s": 0.23521209199680015,
+      "cost": 0.0
+    },
+    "61": {
+      "verdict": "does-not-answer",
+      "confidence": 0.0019,
+      "latency_s": 0.2800925050105434,
+      "cost": 0.0
+    },
+    "62": {
+      "verdict": "does-not-answer",
+      "confidence": 0.0,
+      "latency_s": 0.29240136899170466,
+      "cost": 0.0
+    },
+    "63": {
+      "verdict": "does-not-answer",
+      "confidence": 0.1882,
+      "latency_s": 0.23572101097670384,
+      "cost": 0.0
+    },
+    "64": {
+      "verdict": "answers-it",
+      "confidence": 0.0163,
+      "latency_s": 0.500662956997985,
+      "cost": 0.0
+    },
+    "65": {
+      "verdict": "answers-it",
+      "confidence": 0.2234,
+      "latency_s": 0.28172860099584796,
+      "cost": 0.0
+    },
+    "66": {
+      "verdict": "does-not-answer",
+      "confidence": 0.2688,
+      "latency_s": 0.575237812998239,
+      "cost": 0.0
+    },
+    "67": {
+      "verdict": "answers-it",
+      "confidence": 0.0222,
+      "latency_s": 0.40657787598320283,
+      "cost": 0.0
+    },
+    "68": {
+      "verdict": "does-not-answer",
+      "confidence": 0.0256,
+      "latency_s": 0.7398694290022831,
+      "cost": 0.0
+    },
+    "69": {
+      "verdict": "answers-it",
+      "confidence": 0.0002,
+      "latency_s": 0.27990467901690863,
+      "cost": 0.0
+    },
+    "70": {
+      "verdict": "does-not-answer",
+      "confidence": 0.5945,
+      "latency_s": 0.2358543910086155,
+      "cost": 0.0
+    },
+    "71": {
+      "verdict": "does-not-answer",
+      "confidence": 0.0012,
+      "latency_s": 0.40378079799120314,
+      "cost": 0.0
+    },
+    "72": {
+      "verdict": "does-not-answer",
+      "confidence": 0.7628,
+      "latency_s": 0.16804450898780487,
+      "cost": 0.0
+    },
+    "73": {
+      "verdict": "does-not-answer",
+      "confidence": 0.0677,
+      "latency_s": 0.233561759989243,
+      "cost": 0.0
+    },
+    "74": {
+      "verdict": "answers-it",
+      "confidence": 0.0001,
+      "latency_s": 0.24006256100255996,
+      "cost": 0.0
+    },
+    "75": {
+      "verdict": "does-not-answer",
+      "confidence": 0.0793,
+      "latency_s": 0.40051274601137266,
+      "cost": 0.0
+    },
+    "76": {
+      "verdict": "does-not-answer",
+      "confidence": 0.0701,
+      "latency_s": 0.3926306939974893,
+      "cost": 0.0
+    },
+    "77": {
+      "verdict": "does-not-answer",
+      "confidence": 0.0544,
+      "latency_s": 0.2777193729998544,
+      "cost": 0.0
+    },
+    "78": {
+      "verdict": "does-not-answer",
+      "confidence": 0.2212,
+      "latency_s": 0.24220396697637625,
+      "cost": 0.0
+    },
+    "79": {
+      "verdict": "answers-it",
+      "confidence": 0.0332,
+      "latency_s": 0.6020711169985589,
+      "cost": 0.0
+    },
+    "80": {
+      "verdict": "does-not-answer",
+      "confidence": 0.3622,
+      "latency_s": 0.3898533819883596,
+      "cost": 0.0
+    },
+    "81": {
+      "verdict": "does-not-answer",
+      "confidence": 0.048,
+      "latency_s": 0.1694166990055237,
+      "cost": 0.0
+    },
+    "82": {
+      "verdict": "answers-it",
+      "confidence": 0.0645,
+      "latency_s": 0.1688542880001478,
+      "cost": 0.0
+    },
+    "83": {
+      "verdict": "does-not-answer",
+      "confidence": 0.7952,
+      "latency_s": 0.15818782697897404,
+      "cost": 0.0
+    },
+    "84": {
+      "verdict": "does-not-answer",
+      "confidence": 0.017,
+      "latency_s": 0.23908227297943085,
+      "cost": 0.0
+    },
+    "85": {
+      "verdict": "does-not-answer",
+      "confidence": 0.7156,
+      "latency_s": 0.5029616190004162,
+      "cost": 0.0
+    },
+    "86": {
+      "verdict": "does-not-answer",
+      "confidence": 0.2399,
+      "latency_s": 0.5839113199908752,
+      "cost": 0.0
+    },
+    "87": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9195,
+      "latency_s": 0.15612379400408827,
+      "cost": 0.0
+    },
+    "88": {
+      "verdict": "does-not-answer",
+      "confidence": 0.8709,
+      "latency_s": 0.15758046301198192,
+      "cost": 0.0
+    },
+    "89": {
+      "verdict": "does-not-answer",
+      "confidence": 0.0,
+      "latency_s": 0.7285032020008657,
+      "cost": 0.0
+    },
+    "90": {
+      "verdict": "does-not-answer",
+      "confidence": 0.4502,
+      "latency_s": 0.2374533949769102,
+      "cost": 0.0
+    },
+    "91": {
+      "verdict": "does-not-answer",
+      "confidence": 0.922,
+      "latency_s": 0.2818214890139643,
+      "cost": 0.0
+    },
+    "92": {
+      "verdict": "does-not-answer",
+      "confidence": 0.2563,
+      "latency_s": 0.29287670701160096,
+      "cost": 0.0
+    },
+    "93": {
+      "verdict": "answers-it",
+      "confidence": 0.0091,
+      "latency_s": 0.3943947149964515,
+      "cost": 0.0
+    },
+    "94": {
+      "verdict": "does-not-answer",
+      "confidence": 0.1946,
+      "latency_s": 0.7201147890009452,
+      "cost": 0.0
+    },
+    "95": {
+      "verdict": "does-not-answer",
+      "confidence": 0.5091,
+      "latency_s": 0.23439104401040822,
+      "cost": 0.0
+    },
+    "96": {
+      "verdict": "does-not-answer",
+      "confidence": 0.5443,
+      "latency_s": 0.23568554100347683,
+      "cost": 0.0
+    },
+    "97": {
+      "verdict": "does-not-answer",
+      "confidence": 0.0168,
+      "latency_s": 0.7445592279837001,
+      "cost": 0.0
+    },
+    "98": {
+      "verdict": "does-not-answer",
+      "confidence": 0.5421,
+      "latency_s": 0.1589702669880353,
+      "cost": 0.0
+    },
+    "99": {
+      "verdict": "does-not-answer",
+      "confidence": 0.1084,
+      "latency_s": 0.8911719569878187,
+      "cost": 0.0
+    },
+    "100": {
+      "verdict": "does-not-answer",
+      "confidence": 0.858,
+      "latency_s": 0.27728964600828476,
+      "cost": 0.0
+    }
+  },
+  "jev_1_13": {
+    "1": {
+      "verdict": "answers-it",
+      "confidence": 0.72,
+      "latency_s": 0.7011373739806004,
+      "cost": 4.2672e-05
+    },
+    "2": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.5223112259991467,
+      "cost": 2.3688e-05
+    },
+    "3": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 2.0701906050089747,
+      "cost": 2.1462e-05
+    },
+    "4": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.5034898189769592,
+      "cost": 3.087e-05
+    },
+    "5": {
+      "verdict": "does-not-answer",
+      "confidence": 0.98,
+      "latency_s": 0.5392422569857445,
+      "cost": 3.087e-05
+    },
+    "6": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.5035807579988614,
+      "cost": 2.3646e-05
+    },
+    "7": {
+      "verdict": "answers-it",
+      "confidence": 0.8,
+      "latency_s": 0.490952316991752,
+      "cost": 5.691e-05
+    },
+    "8": {
+      "verdict": "answers-it",
+      "confidence": 0.94,
+      "latency_s": 1.4161885319917928,
+      "cost": 4.473e-05
+    },
+    "9": {
+      "verdict": "answers-it",
+      "confidence": 0.94,
+      "latency_s": 0.47802456698263995,
+      "cost": 2.9694e-05
+    },
+    "10": {
+      "verdict": "answers-it",
+      "confidence": 0.84,
+      "latency_s": 0.5189294810115825,
+      "cost": 4.9938e-05
+    },
+    "11": {
+      "verdict": "answers-it",
+      "confidence": 0.32,
+      "latency_s": 0.5518875980051234,
+      "cost": 2.2848e-05
+    },
+    "12": {
+      "verdict": "does-not-answer",
+      "confidence": 0.26,
+      "latency_s": 3.152405656990595,
+      "cost": 3.2214e-05
+    },
+    "13": {
+      "verdict": "does-not-answer",
+      "confidence": 0.98,
+      "latency_s": 0.5352480449946597,
+      "cost": 2.9904e-05
+    },
+    "14": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.5138429060170893,
+      "cost": 2.4822e-05
+    },
+    "15": {
+      "verdict": "does-not-answer",
+      "confidence": 0.98,
+      "latency_s": 0.48247048098710366,
+      "cost": 2.5326e-05
+    },
+    "16": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.5281503660080489,
+      "cost": 4.0446e-05
+    },
+    "17": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 1.0723144600051455,
+      "cost": 2.289e-05
+    },
+    "18": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.4649995750223752,
+      "cost": 2.0832e-05
+    },
+    "19": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 0.4757280169869773,
+      "cost": 4.5108e-05
+    },
+    "20": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 0.4928255520062521,
+      "cost": 2.8812e-05
+    },
+    "21": {
+      "verdict": "answers-it",
+      "confidence": 0.98,
+      "latency_s": 0.47860899099032395,
+      "cost": 3.6876e-05
+    },
+    "22": {
+      "verdict": "does-not-answer",
+      "confidence": 0.98,
+      "latency_s": 0.5331092129927129,
+      "cost": 3.9144e-05
+    },
+    "23": {
+      "verdict": "answers-it",
+      "confidence": 0.98,
+      "latency_s": 0.5881741699995473,
+      "cost": 3.3264e-05
+    },
+    "24": {
+      "verdict": "answers-it",
+      "confidence": 0.98,
+      "latency_s": 0.5360857939813286,
+      "cost": 3.801e-05
+    },
+    "25": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.5097910449840128,
+      "cost": 2.4906e-05
+    },
+    "26": {
+      "verdict": "answers-it",
+      "confidence": 0.58,
+      "latency_s": 0.4967973799793981,
+      "cost": 2.2218e-05
+    },
+    "27": {
+      "verdict": "does-not-answer",
+      "confidence": 0.98,
+      "latency_s": 0.4966100199962966,
+      "cost": 4.8552e-05
+    },
+    "28": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.504215649998514,
+      "cost": 2.7132e-05
+    },
+    "29": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.4925310680118855,
+      "cost": 4.9098e-05
+    },
+    "30": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.48951784599921666,
+      "cost": 2.037e-05
+    },
+    "31": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.47509007799089886,
+      "cost": 3.5112e-05
+    },
+    "32": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.5033618989982642,
+      "cost": 2.5326e-05
+    },
+    "33": {
+      "verdict": "answers-it",
+      "confidence": 0.98,
+      "latency_s": 0.5275013220089022,
+      "cost": 2.4108e-05
+    },
+    "34": {
+      "verdict": "answers-it",
+      "confidence": 0.64,
+      "latency_s": 0.5411642199906055,
+      "cost": 3.0996e-05
+    },
+    "35": {
+      "verdict": "answers-it",
+      "confidence": 0.96,
+      "latency_s": 0.49013771701720543,
+      "cost": 4.7376e-05
+    },
+    "36": {
+      "verdict": "answers-it",
+      "confidence": 0.8,
+      "latency_s": 0.48864344399771653,
+      "cost": 4.5486e-05
+    },
+    "37": {
+      "verdict": "does-not-answer",
+      "confidence": 0.54,
+      "latency_s": 0.5579270689922851,
+      "cost": 2.9946e-05
+    },
+    "38": {
+      "verdict": "does-not-answer",
+      "confidence": 0.08,
+      "latency_s": 0.4878855069982819,
+      "cost": 2.6208e-05
+    },
+    "39": {
+      "verdict": "answers-it",
+      "confidence": 0.7,
+      "latency_s": 0.5038436769973487,
+      "cost": 2.7888e-05
+    },
+    "40": {
+      "verdict": "answers-it",
+      "confidence": 0.48,
+      "latency_s": 0.4440086679824162,
+      "cost": 3.4146e-05
+    },
+    "41": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.5142392970155925,
+      "cost": 2.4192e-05
+    },
+    "42": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.5075236849952489,
+      "cost": 2.1756e-05
+    },
+    "43": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.4883014190127142,
+      "cost": 2.1714e-05
+    },
+    "44": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.4700793420197442,
+      "cost": 2.7972e-05
+    },
+    "45": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.477163923002081,
+      "cost": 2.3226e-05
+    },
+    "46": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.46842347001074813,
+      "cost": 1.9866e-05
+    },
+    "47": {
+      "verdict": "does-not-answer",
+      "confidence": 0.18,
+      "latency_s": 0.4956646090140566,
+      "cost": 2.7384e-05
+    },
+    "48": {
+      "verdict": "answers-it",
+      "confidence": 0.98,
+      "latency_s": 0.5252271910139825,
+      "cost": 3.612e-05
+    },
+    "49": {
+      "verdict": "answers-it",
+      "confidence": 0.98,
+      "latency_s": 0.5915603640023619,
+      "cost": 4.3638e-05
+    },
+    "50": {
+      "verdict": "answers-it",
+      "confidence": 0.94,
+      "latency_s": 0.4876854349859059,
+      "cost": 4.8468e-05
+    },
+    "51": {
+      "verdict": "does-not-answer",
+      "confidence": 0.92,
+      "latency_s": 0.503878371004248,
+      "cost": 5.0568e-05
+    },
+    "52": {
+      "verdict": "does-not-answer",
+      "confidence": 0.54,
+      "latency_s": 0.4675160270126071,
+      "cost": 4.1412e-05
+    },
+    "53": {
+      "verdict": "answers-it",
+      "confidence": 0.94,
+      "latency_s": 0.48509588802699,
+      "cost": 3.2382e-05
+    },
+    "54": {
+      "verdict": "does-not-answer",
+      "confidence": 0.7,
+      "latency_s": 0.541355408000527,
+      "cost": 2.5032e-05
+    },
+    "55": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.46467339497758076,
+      "cost": 2.5074e-05
+    },
+    "56": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.5452843779930845,
+      "cost": 2.2638e-05
+    },
+    "57": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.5496593109855894,
+      "cost": 2.4528e-05
+    },
+    "58": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.495829538005637,
+      "cost": 4.095e-05
+    },
+    "59": {
+      "verdict": "does-not-answer",
+      "confidence": 0.88,
+      "latency_s": 0.4645343349839095,
+      "cost": 2.793e-05
+    },
+    "60": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.5098955440043937,
+      "cost": 2.9106e-05
+    },
+    "61": {
+      "verdict": "answers-it",
+      "confidence": 0.98,
+      "latency_s": 0.5057907959853765,
+      "cost": 3.0072e-05
+    },
+    "62": {
+      "verdict": "answers-it",
+      "confidence": 0.98,
+      "latency_s": 0.47671399600221775,
+      "cost": 3.3054e-05
+    },
+    "63": {
+      "verdict": "answers-it",
+      "confidence": 0.74,
+      "latency_s": 0.5128917150141206,
+      "cost": 2.6418e-05
+    },
+    "64": {
+      "verdict": "does-not-answer",
+      "confidence": 0.58,
+      "latency_s": 0.5908887860132381,
+      "cost": 3.7296e-05
+    },
+    "65": {
+      "verdict": "answers-it",
+      "confidence": 0.24,
+      "latency_s": 0.47250644699670374,
+      "cost": 3.2256e-05
+    },
+    "66": {
+      "verdict": "does-not-answer",
+      "confidence": 0.98,
+      "latency_s": 0.5209506000101101,
+      "cost": 4.4436e-05
+    },
+    "67": {
+      "verdict": "does-not-answer",
+      "confidence": 0.8,
+      "latency_s": 0.50238686602097,
+      "cost": 3.6162e-05
+    },
+    "68": {
+      "verdict": "does-not-answer",
+      "confidence": 0.66,
+      "latency_s": 0.5230837300186977,
+      "cost": 4.956e-05
+    },
+    "69": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.5207576660031918,
+      "cost": 2.8392e-05
+    },
+    "70": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.49928814300801605,
+      "cost": 2.6292e-05
+    },
+    "71": {
+      "verdict": "does-not-answer",
+      "confidence": 0.62,
+      "latency_s": 0.481631605012808,
+      "cost": 3.4398e-05
+    },
+    "72": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.4736946230113972,
+      "cost": 2.3436e-05
+    },
+    "73": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.5226197890006006,
+      "cost": 2.5914e-05
+    },
+    "74": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.4865064679761417,
+      "cost": 2.6838e-05
+    },
+    "75": {
+      "verdict": "does-not-answer",
+      "confidence": 0.68,
+      "latency_s": 0.5115104299911764,
+      "cost": 3.7338e-05
+    },
+    "76": {
+      "verdict": "does-not-answer",
+      "confidence": 0.72,
+      "latency_s": 0.5055887269845698,
+      "cost": 3.528e-05
+    },
+    "77": {
+      "verdict": "does-not-answer",
+      "confidence": 0.84,
+      "latency_s": 0.49184065900044516,
+      "cost": 3.0744e-05
+    },
+    "78": {
+      "verdict": "answers-it",
+      "confidence": 0.72,
+      "latency_s": 0.5077987620024942,
+      "cost": 2.541e-05
+    },
+    "79": {
+      "verdict": "does-not-answer",
+      "confidence": 0.54,
+      "latency_s": 0.49395051499595866,
+      "cost": 4.641e-05
+    },
+    "80": {
+      "verdict": "does-not-answer",
+      "confidence": 0.68,
+      "latency_s": 0.4792273060011212,
+      "cost": 3.4944e-05
+    },
+    "81": {
+      "verdict": "does-not-answer",
+      "confidence": 0.98,
+      "latency_s": 0.5270048499805853,
+      "cost": 2.3478e-05
+    },
+    "82": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.498207889002515,
+      "cost": 2.2764e-05
+    },
+    "83": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.5356549419811927,
+      "cost": 2.1966e-05
+    },
+    "84": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.47036984100122936,
+      "cost": 2.8602e-05
+    },
+    "85": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.5489128880144563,
+      "cost": 3.9354e-05
+    },
+    "86": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.6569134080200456,
+      "cost": 4.074e-05
+    },
+    "87": {
+      "verdict": "does-not-answer",
+      "confidence": 0.94,
+      "latency_s": 0.4994119579787366,
+      "cost": 2.1714e-05
+    },
+    "88": {
+      "verdict": "does-not-answer",
+      "confidence": 0.74,
+      "latency_s": 0.4369205460243393,
+      "cost": 2.1672e-05
+    },
+    "89": {
+      "verdict": "answers-it",
+      "confidence": 0.94,
+      "latency_s": 0.4814712929946836,
+      "cost": 4.704e-05
+    },
+    "90": {
+      "verdict": "does-not-answer",
+      "confidence": 0.58,
+      "latency_s": 0.49779699798091315,
+      "cost": 2.4906e-05
+    },
+    "91": {
+      "verdict": "answers-it",
+      "confidence": 0.98,
+      "latency_s": 0.49262275200453587,
+      "cost": 3.066e-05
+    },
+    "92": {
+      "verdict": "answers-it",
+      "confidence": 0.96,
+      "latency_s": 0.5045072559732944,
+      "cost": 3.192e-05
+    },
+    "93": {
+      "verdict": "answers-it",
+      "confidence": 0.8,
+      "latency_s": 0.5228472809831146,
+      "cost": 3.5616e-05
+    },
+    "94": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.5078999619872775,
+      "cost": 4.9434e-05
+    },
+    "95": {
+      "verdict": "answers-it",
+      "confidence": 0.62,
+      "latency_s": 0.524026191997109,
+      "cost": 2.4486e-05
+    },
+    "96": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.4864563529845327,
+      "cost": 2.8224e-05
+    },
+    "97": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.5074466499791015,
+      "cost": 4.8342e-05
+    },
+    "98": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 0.5287255570001435,
+      "cost": 2.1798e-05
+    },
+    "99": {
+      "verdict": "does-not-answer",
+      "confidence": 0.96,
+      "latency_s": 0.4485363060084637,
+      "cost": 4.977e-05
+    },
+    "100": {
+      "verdict": "does-not-answer",
+      "confidence": 0.96,
+      "latency_s": 0.8401519340113737,
+      "cost": 3.108e-05
+    }
+  },
+  "gemini_2_5_flash": {
+    "1": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 1.2969065530051012,
+      "cost": 0.0003413
+    },
+    "2": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 1.1321524899976794,
+      "cost": 0.0002859
+    },
+    "3": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 1.102203754009679,
+      "cost": 0.0002785
+    },
+    "4": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 1.3190681419800967,
+      "cost": 0.0003046
+    },
+    "5": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.156321525981184,
+      "cost": 0.0002861
+    },
+    "6": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.1024475769954734,
+      "cost": 0.0002624
+    },
+    "7": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 2.743069343996467,
+      "cost": 0.0004397
+    },
+    "8": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 1.182256854022853,
+      "cost": 0.0003897
+    },
+    "9": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 1.4983703000179958,
+      "cost": 0.0003098
+    },
+    "10": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 1.8602667079831008,
+      "cost": 0.0004056
+    },
+    "11": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 1.0524934490094893,
+      "cost": 0.0002673
+    },
+    "12": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 1.292446737003047,
+      "cost": 0.0003582
+    },
+    "13": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.0690230799955316,
+      "cost": 0.0002959
+    },
+    "14": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 1.1590864690078888,
+      "cost": 0.0002597
+    },
+    "15": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.0703815989836585,
+      "cost": 0.0002613
+    },
+    "16": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.108898431994021,
+      "cost": 0.00033
+    },
+    "17": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.3387939459935296,
+      "cost": 0.0003005
+    },
+    "18": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 1.1063326690054964,
+      "cost": 0.0002392
+    },
+    "19": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 1.6982512309914455,
+      "cost": 0.0003786
+    },
+    "20": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 1.2254168350191321,
+      "cost": 0.0002631
+    },
+    "21": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 1.1262625200033654,
+      "cost": 0.0002942
+    },
+    "22": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.2712007139925845,
+      "cost": 0.0003751
+    },
+    "23": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 1.0385601640155073,
+      "cost": 0.0002952
+    },
+    "24": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 1.1800812350120395,
+      "cost": 0.0003383
+    },
+    "25": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.0440281469782349,
+      "cost": 0.0002599
+    },
+    "26": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 1.3521006720256992,
+      "cost": 0.0002895
+    },
+    "27": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 1.1625684929895215,
+      "cost": 0.0004203
+    },
+    "28": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 1.198488505993737,
+      "cost": 0.0002731
+    },
+    "29": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.284653670998523,
+      "cost": 0.0003946
+    },
+    "30": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.611481193016516,
+      "cost": 0.0002517
+    },
+    "31": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 1.8206832399882842,
+      "cost": 0.0002948
+    },
+    "32": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 2.9387766080035362,
+      "cost": 0.0002348
+    },
+    "33": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 2.5216701900062617,
+      "cost": 0.000238
+    },
+    "34": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 1.2999318140209652,
+      "cost": 0.0002544
+    },
+    "35": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 1.173323288996471,
+      "cost": 0.0003593
+    },
+    "36": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 1.111944995005615,
+      "cost": 0.0003685
+    },
+    "37": {
+      "verdict": "does-not-answer",
+      "confidence": 0.8,
+      "latency_s": 1.179579890012974,
+      "cost": 0.0003202
+    },
+    "38": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 1.3195895460085012,
+      "cost": 0.0002274
+    },
+    "39": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 1.0133357949962374,
+      "cost": 0.0002723
+    },
+    "40": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 1.3883945420093369,
+      "cost": 0.0002844
+    },
+    "41": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 1.0661590560048353,
+      "cost": 0.0002438
+    },
+    "42": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.2895386590098497,
+      "cost": 0.0002352
+    },
+    "43": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 1.0661844380083494,
+      "cost": 0.0002444
+    },
+    "44": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.3599169199878816,
+      "cost": 0.0002852
+    },
+    "45": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.1937598749937024,
+      "cost": 0.0002679
+    },
+    "46": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.142697033006698,
+      "cost": 0.0002506
+    },
+    "47": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 1.2016626010008622,
+      "cost": 0.0002445
+    },
+    "48": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 1.5552931959973648,
+      "cost": 0.0003353
+    },
+    "49": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 1.0550728059897665,
+      "cost": 0.0003486
+    },
+    "50": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 1.2703336709819268,
+      "cost": 0.000372
+    },
+    "51": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 1.251463861000957,
+      "cost": 0.0004702
+    },
+    "52": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.3903685609984677,
+      "cost": 0.0003596
+    },
+    "53": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 1.1169076369842514,
+      "cost": 0.0002883
+    },
+    "54": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.2115930619766004,
+      "cost": 0.000272
+    },
+    "55": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.221410972008016,
+      "cost": 0.0002703
+    },
+    "56": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.0966545350092929,
+      "cost": 0.0002367
+    },
+    "57": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.3421203710022382,
+      "cost": 0.0002924
+    },
+    "58": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 1.3709406979905907,
+      "cost": 0.0003919
+    },
+    "59": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.3044106590095907,
+      "cost": 0.0002777
+    },
+    "60": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 1.3128052469983231,
+      "cost": 0.0002811
+    },
+    "61": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 1.3578020939894486,
+      "cost": 0.0003079
+    },
+    "62": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 1.2157033309922554,
+      "cost": 0.0003138
+    },
+    "63": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 1.301798152999254,
+      "cost": 0.0002965
+    },
+    "64": {
+      "verdict": "does-not-answer",
+      "confidence": 0.8,
+      "latency_s": 1.2400990430032834,
+      "cost": 0.0003287
+    },
+    "65": {
+      "verdict": "answers-it",
+      "confidence": 0.95,
+      "latency_s": 1.4627237020176835,
+      "cost": 0.0003008
+    },
+    "66": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.2109233659866732,
+      "cost": 0.0003614
+    },
+    "67": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.2835990210005548,
+      "cost": 0.0003502
+    },
+    "68": {
+      "verdict": "does-not-answer",
+      "confidence": 0.8,
+      "latency_s": 1.5076408390013967,
+      "cost": 0.0005086
+    },
+    "69": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 1.2659185449883807,
+      "cost": 0.0003054
+    },
+    "70": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 1.0323561409895774,
+      "cost": 0.0002606
+    },
+    "71": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 1.2905081779754255,
+      "cost": 0.0003131
+    },
+    "72": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 1.216292027005693,
+      "cost": 0.0002578
+    },
+    "73": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 1.1908077510015573,
+      "cost": 0.0002862
+    },
+    "74": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 1.214581085019745,
+      "cost": 0.0003044
+    },
+    "75": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 1.6909962670179084,
+      "cost": 0.0002806
+    },
+    "76": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 1.2115522130043246,
+      "cost": 0.0002697
+    },
+    "77": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 1.335988061997341,
+      "cost": 0.0002826
+    },
+    "78": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 1.194233546993928,
+      "cost": 0.0002527
+    },
+    "79": {
+      "verdict": "answers-it",
+      "confidence": 0.95,
+      "latency_s": 1.4148578970052768,
+      "cost": 0.0004076
+    },
+    "80": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 1.2110077929974068,
+      "cost": 0.0002948
+    },
+    "81": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.2096232610056177,
+      "cost": 0.0002721
+    },
+    "82": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.3135786959901452,
+      "cost": 0.0002594
+    },
+    "83": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 1.212145450990647,
+      "cost": 0.000243
+    },
+    "84": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 1.208693733002292,
+      "cost": 0.0002965
+    },
+    "85": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.209796479990473,
+      "cost": 0.0003336
+    },
+    "86": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 2.6426038710051216,
+      "cost": 0.0003663
+    },
+    "87": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.425553603010485,
+      "cost": 0.0003169
+    },
+    "88": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 1.0143522580037825,
+      "cost": 0.0002063
+    },
+    "89": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 1.2550237239920534,
+      "cost": 0.0003853
+    },
+    "90": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.1304573109955527,
+      "cost": 0.0002878
+    },
+    "91": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 1.1162295890098903,
+      "cost": 0.0002759
+    },
+    "92": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 1.2087624440027867,
+      "cost": 0.0002946
+    },
+    "93": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 1.3165377989935223,
+      "cost": 0.0003204
+    },
+    "94": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.3057126180210616,
+      "cost": 0.0003878
+    },
+    "95": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 1.2504172490152996,
+      "cost": 0.0002645
+    },
+    "96": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 1.1500324720109347,
+      "cost": 0.0002855
+    },
+    "97": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.323183163010981,
+      "cost": 0.0004075
+    },
+    "98": {
+      "verdict": "does-not-answer",
+      "confidence": 1.0,
+      "latency_s": 1.1487348760128953,
+      "cost": 0.0002462
+    },
+    "99": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.1852949419990182,
+      "cost": 0.0003993
+    },
+    "100": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.4993608919903636,
+      "cost": 0.0003383
+    }
+  },
+  "gpt_4o_mini": {
+    "1": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 1.9795750489865895,
+      "cost": 0.00011535
+    },
+    "2": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 2.4403337920084596,
+      "cost": 7.47e-05
+    },
+    "3": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.6627421510056593,
+      "cost": 7.02e-05
+    },
+    "4": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.824153198977001,
+      "cost": 8.745e-05
+    },
+    "5": {
+      "verdict": "does-not-answer",
+      "confidence": 0.8,
+      "latency_s": 1.9526578479853924,
+      "cost": 8.775e-05
+    },
+    "6": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.8152869259938598,
+      "cost": 7.35e-05
+    },
+    "7": {
+      "verdict": "answers-it",
+      "confidence": 0.95,
+      "latency_s": 2.7393942619964946,
+      "cost": 0.00016155
+    },
+    "8": {
+      "verdict": "answers-it",
+      "confidence": 0.95,
+      "latency_s": 1.720716458017705,
+      "cost": 0.00012255
+    },
+    "9": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 1.8229276780039072,
+      "cost": 8.76e-05
+    },
+    "10": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 2.4387761039834004,
+      "cost": 0.00013275
+    },
+    "11": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 2.363229358015815,
+      "cost": 7.035e-05
+    },
+    "12": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 1.7818588209920563,
+      "cost": 9.255e-05
+    },
+    "13": {
+      "verdict": "does-not-answer",
+      "confidence": 0.8,
+      "latency_s": 2.087827215989819,
+      "cost": 9.195e-05
+    },
+    "14": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.963728322996758,
+      "cost": 7.425e-05
+    },
+    "15": {
+      "verdict": "does-not-answer",
+      "confidence": 0.8,
+      "latency_s": 1.741207590996055,
+      "cost": 8.385e-05
+    },
+    "16": {
+      "verdict": "does-not-answer",
+      "confidence": 0.8,
+      "latency_s": 2.2610251189908013,
+      "cost": 0.00011325
+    },
+    "17": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.9761205380200408,
+      "cost": 7.275e-05
+    },
+    "18": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 2.6617034939990845,
+      "cost": 6.6e-05
+    },
+    "19": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 2.6239709240035154,
+      "cost": 0.00012975
+    },
+    "20": {
+      "verdict": "answers-it",
+      "confidence": 1.0,
+      "latency_s": 2.1810279650089797,
+      "cost": 8.505e-05
+    },
+    "21": {
+      "verdict": "answers-it",
+      "confidence": 0.95,
+      "latency_s": 1.6846355859888718,
+      "cost": 0.0001068
+    },
+    "22": {
+      "verdict": "does-not-answer",
+      "confidence": 0.7,
+      "latency_s": 1.819281761010643,
+      "cost": 0.00011115
+    },
+    "23": {
+      "verdict": "answers-it",
+      "confidence": 0.95,
+      "latency_s": 1.7309371680021286,
+      "cost": 0.0001023
+    },
+    "24": {
+      "verdict": "answers-it",
+      "confidence": 0.95,
+      "latency_s": 2.609849619999295,
+      "cost": 0.0001008
+    },
+    "25": {
+      "verdict": "does-not-answer",
+      "confidence": 0.8,
+      "latency_s": 2.769573095982196,
+      "cost": 8.58e-05
+    },
+    "26": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 2.100123139010975,
+      "cost": 7.755e-05
+    },
+    "27": {
+      "verdict": "does-not-answer",
+      "confidence": 0.8,
+      "latency_s": 2.7998447330028284,
+      "cost": 0.0001401
+    },
+    "28": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 2.0466444339836016,
+      "cost": 8.52e-05
+    },
+    "29": {
+      "verdict": "answers-it",
+      "confidence": 0.85,
+      "latency_s": 1.6302108799864072,
+      "cost": 0.00013515
+    },
+    "30": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 2.436561023001559,
+      "cost": 6.465e-05
+    },
+    "31": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 2.230499535013223,
+      "cost": 8.88e-05
+    },
+    "32": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 2.1576562659756746,
+      "cost": 7.095e-05
+    },
+    "33": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 1.9083708289836068,
+      "cost": 7.53e-05
+    },
+    "34": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 1.6570078549848404,
+      "cost": 8.205e-05
+    },
+    "35": {
+      "verdict": "answers-it",
+      "confidence": 0.95,
+      "latency_s": 2.37865770701319,
+      "cost": 0.0001239
+    },
+    "36": {
+      "verdict": "answers-it",
+      "confidence": 0.95,
+      "latency_s": 2.6500292440177873,
+      "cost": 0.00013365
+    },
+    "37": {
+      "verdict": "does-not-answer",
+      "confidence": 0.8,
+      "latency_s": 1.9456326880026609,
+      "cost": 8.76e-05
+    },
+    "38": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 2.327460758999223,
+      "cost": 7.995e-05
+    },
+    "39": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 1.6249530379718635,
+      "cost": 8.895e-05
+    },
+    "40": {
+      "verdict": "answers-it",
+      "confidence": 0.95,
+      "latency_s": 2.189332680980442,
+      "cost": 9.345e-05
+    },
+    "41": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 2.742225444992073,
+      "cost": 7.17e-05
+    },
+    "42": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.7960197840002365,
+      "cost": 6.78e-05
+    },
+    "43": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.8398246220021974,
+      "cost": 7.02e-05
+    },
+    "44": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 2.2330478509829845,
+      "cost": 7.89e-05
+    },
+    "45": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.7172203130030539,
+      "cost": 6.975e-05
+    },
+    "46": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 2.4337123619916383,
+      "cost": 6.48e-05
+    },
+    "47": {
+      "verdict": "answers-it",
+      "confidence": 0.95,
+      "latency_s": 1.6158514940179884,
+      "cost": 7.92e-05
+    },
+    "48": {
+      "verdict": "answers-it",
+      "confidence": 0.95,
+      "latency_s": 1.9602924729988445,
+      "cost": 0.0001005
+    },
+    "49": {
+      "verdict": "answers-it",
+      "confidence": 0.95,
+      "latency_s": 2.0599977469828445,
+      "cost": 0.00011115
+    },
+    "50": {
+      "verdict": "answers-it",
+      "confidence": 0.95,
+      "latency_s": 2.266177573997993,
+      "cost": 0.0001383
+    },
+    "51": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 1.6409512080135755,
+      "cost": 0.0001389
+    },
+    "52": {
+      "verdict": "does-not-answer",
+      "confidence": 0.8,
+      "latency_s": 1.806483455002308,
+      "cost": 0.00011745
+    },
+    "53": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 1.741272540006321,
+      "cost": 8.55e-05
+    },
+    "54": {
+      "verdict": "does-not-answer",
+      "confidence": 0.8,
+      "latency_s": 2.488994847983122,
+      "cost": 8.28e-05
+    },
+    "55": {
+      "verdict": "does-not-answer",
+      "confidence": 0.8,
+      "latency_s": 1.9158344179741107,
+      "cost": 8.055e-05
+    },
+    "56": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 2.1259861169965006,
+      "cost": 6.945e-05
+    },
+    "57": {
+      "verdict": "does-not-answer",
+      "confidence": 0.95,
+      "latency_s": 1.8212591030169278,
+      "cost": 7.125e-05
+    },
+    "58": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.8208707220037468,
+      "cost": 0.00011235
+    },
+    "59": {
+      "verdict": "does-not-answer",
+      "confidence": 0.8,
+      "latency_s": 1.6008283999981359,
+      "cost": 8.31e-05
+    },
+    "60": {
+      "verdict": "does-not-answer",
+      "confidence": 0.95,
+      "latency_s": 1.650889501994243,
+      "cost": 7.935e-05
+    },
+    "61": {
+      "verdict": "answers-it",
+      "confidence": 0.95,
+      "latency_s": 1.9891500779776834,
+      "cost": 7.98e-05
+    },
+    "62": {
+      "verdict": "answers-it",
+      "confidence": 0.95,
+      "latency_s": 1.9708087719918694,
+      "cost": 9.015e-05
+    },
+    "63": {
+      "verdict": "answers-it",
+      "confidence": 0.95,
+      "latency_s": 1.5272222769854125,
+      "cost": 7.185e-05
+    },
+    "64": {
+      "verdict": "does-not-answer",
+      "confidence": 0.8,
+      "latency_s": 3.2332745479943696,
+      "cost": 0.0001023
+    },
+    "65": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 2.895399239001563,
+      "cost": 9.24e-05
+    },
+    "66": {
+      "verdict": "does-not-answer",
+      "confidence": 0.7,
+      "latency_s": 3.483739141986007,
+      "cost": 0.0001215
+    },
+    "67": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 2.15184018999571,
+      "cost": 0.0001059
+    },
+    "68": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 1.7593014349986333,
+      "cost": 0.0001284
+    },
+    "69": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.8589219079876784,
+      "cost": 8.22e-05
+    },
+    "70": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.9642878899758216,
+      "cost": 7.92e-05
+    },
+    "71": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 1.8741758749820292,
+      "cost": 0.0001074
+    },
+    "72": {
+      "verdict": "does-not-answer",
+      "confidence": 0.95,
+      "latency_s": 3.5439936759939883,
+      "cost": 7.62e-05
+    },
+    "73": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.8535452049982268,
+      "cost": 7.92e-05
+    },
+    "74": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 2.597375993995229,
+      "cost": 8.175e-05
+    },
+    "75": {
+      "verdict": "answers-it",
+      "confidence": 0.95,
+      "latency_s": 2.1134605080005713,
+      "cost": 0.00010935
+    },
+    "76": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 1.8861234179930761,
+      "cost": 0.0001014
+    },
+    "77": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 1.7724088749964722,
+      "cost": 9.18e-05
+    },
+    "78": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 1.9193864080007188,
+      "cost": 8.085e-05
+    },
+    "79": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 1.7273489730141591,
+      "cost": 0.00012735
+    },
+    "80": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 2.449870186013868,
+      "cost": 0.0001056
+    },
+    "81": {
+      "verdict": "does-not-answer",
+      "confidence": 0.8,
+      "latency_s": 2.413700234988937,
+      "cost": 8.385e-05
+    },
+    "82": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 2.2321693809935823,
+      "cost": 7.725e-05
+    },
+    "83": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 2.6555590450007003,
+      "cost": 7.44e-05
+    },
+    "84": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 3.1978075689985417,
+      "cost": 8.715e-05
+    },
+    "85": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.7111475190031342,
+      "cost": 0.00010605
+    },
+    "86": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.5088795709889382,
+      "cost": 0.00010995
+    },
+    "87": {
+      "verdict": "does-not-answer",
+      "confidence": 0.8,
+      "latency_s": 1.6944623769959435,
+      "cost": 6.765e-05
+    },
+    "88": {
+      "verdict": "answers-it",
+      "confidence": 0.8,
+      "latency_s": 2.156845093006268,
+      "cost": 6.705e-05
+    },
+    "89": {
+      "verdict": "answers-it",
+      "confidence": 0.95,
+      "latency_s": 1.8161444750148803,
+      "cost": 0.0001257
+    },
+    "90": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 1.858273651014315,
+      "cost": 6.96e-05
+    },
+    "91": {
+      "verdict": "answers-it",
+      "confidence": 0.95,
+      "latency_s": 1.7725102840049658,
+      "cost": 8.715e-05
+    },
+    "92": {
+      "verdict": "answers-it",
+      "confidence": 0.95,
+      "latency_s": 1.9808998240041547,
+      "cost": 8.955e-05
+    },
+    "93": {
+      "verdict": "answers-it",
+      "confidence": 0.9,
+      "latency_s": 1.8634807000053115,
+      "cost": 9.93e-05
+    },
+    "94": {
+      "verdict": "does-not-answer",
+      "confidence": 0.8,
+      "latency_s": 2.9179087530064862,
+      "cost": 0.000126
+    },
+    "95": {
+      "verdict": "answers-it",
+      "confidence": 0.95,
+      "latency_s": 2.7751645599782933,
+      "cost": 7.53e-05
+    },
+    "96": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.6444031560095027,
+      "cost": 7.86e-05
+    },
+    "97": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 2.8979839209932834,
+      "cost": 0.00013335
+    },
+    "98": {
+      "verdict": "does-not-answer",
+      "confidence": 0.9,
+      "latency_s": 1.8357574739784468,
+      "cost": 7.14e-05
+    },
+    "99": {
+      "verdict": "does-not-answer",
+      "confidence": 0.8,
+      "latency_s": 2.1973834369855467,
+      "cost": 0.0001368
+    },
+    "100": {
+      "verdict": "does-not-answer",
+      "confidence": 0.8,
+      "latency_s": 2.1781146159919444,
+      "cost": 8.745e-05
+    }
+  }
+}

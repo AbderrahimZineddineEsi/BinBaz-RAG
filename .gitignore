@@ -17,7 +17,9 @@ data/*
 !data/evaluation_candidates_100.csv
 !data/evaluation_ground_truth.json
 !data/benchmark_predictions.json
+!data/binary_benchmark_predictions.json
 !data/laya_finetune_dataset.jsonl
+!data/laya_finetune_binary_dataset.jsonl
 notebooks/data/
 kaggle_embedding_outputs/
 upload_hf.py
