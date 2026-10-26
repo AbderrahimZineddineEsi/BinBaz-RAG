@@ -13,6 +13,10 @@ venv/
 # Data is downloaded from Hugging Face on first run
 data/*
 !data/.gitkeep
+!data/evaluation_candidates_100.json
+!data/evaluation_candidates_100.csv
+!data/evaluation_ground_truth.json
+!data/laya_finetune_dataset.jsonl
 kaggle_embedding_outputs/
 upload_hf.py
 *.pdf

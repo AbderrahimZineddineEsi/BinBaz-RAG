@@ -7,3 +7,5 @@ requests>=2.31
 pandas>=2
 numpy>=1.26
 pydantic>=2
+laya>=0.4
+scikit-learn>=1.4
