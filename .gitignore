@@ -18,6 +18,7 @@ data/*
 !data/evaluation_ground_truth.json
 !data/benchmark_predictions.json
 !data/binary_benchmark_predictions.json
+!data/sonnet_5_5_medium_10_instances.json
 !data/laya_finetune_dataset.jsonl
 !data/laya_finetune_binary_dataset.jsonl
 notebooks/data/
