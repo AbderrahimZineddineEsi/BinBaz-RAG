@@ -1,0 +1,251 @@
+question_id,category,question
+1,Aqidah and Tawhid,ما معنى توحيد الربوبية؟
+2,Aqidah and Tawhid,ما الفرق بين توحيد الربوبية وتوحيد الألوهية؟
+3,Aqidah and Tawhid,ما معنى توحيد الأسماء والصفات؟
+4,Aqidah and Tawhid,ما شروط لا إله إلا الله؟
+5,Aqidah and Tawhid,ما معنى شهادة أن محمداً رسول الله؟
+6,Aqidah and Tawhid,ما الفرق بين الشرك الأكبر والشرك الأصغر؟
+7,Aqidah and Tawhid,ما حكم دعاء الأموات وطلب المدد منهم؟
+8,Aqidah and Tawhid,ما حكم الذبح لغير الله؟
+9,Aqidah and Tawhid,ما حكم الحلف بغير الله؟
+10,Aqidah and Tawhid,ما حكم تعليق التمائم لدفع العين؟
+11,Aqidah and Tawhid,ما حكم الرقية التي تحتوي على ألفاظ مجهولة؟
+12,Aqidah and Tawhid,ما حكم الاستعانة بالجن في العلاج؟
+13,Aqidah and Tawhid,ما حكم قول: ما شاء الله وشئت؟
+14,Aqidah and Tawhid,هل يجوز طلب الدعاء من شخص ميت؟
+15,Aqidah and Tawhid,ما حكم زيارة القبور؟
+16,Aqidah and Tawhid,ما حكم شد الرحال إلى القبور للتبرك؟
+17,Aqidah and Tawhid,ما الفرق بين التوسل المشروع والتوسل الممنوع؟
+18,Aqidah and Tawhid,ما حكم التوسل بجاه النبي صلى الله عليه وسلم؟
+19,Aqidah and Tawhid,ما حكم الاستغاثة بالنبي صلى الله عليه وسلم بعد وفاته؟
+20,Aqidah and Tawhid,كيف يجمع المسلم بين إثبات الصفات وتنزيه الله عن مشابهة المخلوقين؟
+21,Aqidah and Tawhid,ما معنى الإيمان بأسماء الله وصفاته دون تحريف ولا تعطيل؟
+22,Aqidah and Tawhid,ما حكم إنكار صفة ثابتة في القرآن أو السنة؟
+23,Aqidah and Tawhid,ما حكم سب الدين أو الاستهزاء بشيء من شعائر الإسلام؟
+24,Aqidah and Tawhid,ما ضابط تكفير المسلم المعين؟
+25,Aqidah and Tawhid,ما الفرق بين الكفر الأكبر والكفر الأصغر؟
+26,Aqidah and Tawhid,هل كل من وقع في الشرك الأكبر يحكم عليه مباشرة بأنه مشرك بعينه؟
+27,Aqidah and Tawhid,ما حكم تعليق آيات القرآن في السيارة للحفظ؟
+28,Aqidah and Tawhid,ما حكم التبرك بالأشجار والأحجار؟
+29,Aqidah and Tawhid,ما حكم الذهاب إلى الكهان والعرافين؟
+30,Aqidah and Tawhid,ما حكم تصديق الأبراج والتوقعات الفلكية؟
+31,Prayer and purification,ما شروط صحة الصلاة؟
+32,Prayer and purification,ما أركان الصلاة التي لا تصح بدونها؟
+33,Prayer and purification,ما حكم من ترك الصلاة تكاسلاً؟
+34,Prayer and purification,ما حكم تأخير الصلاة عن وقتها بسبب العمل؟
+35,Prayer and purification,ما حكم الصلاة مع وجود نجاسة على الثوب؟
+36,Prayer and purification,ماذا يفعل من شك في عدد الركعات؟
+37,Prayer and purification,ما حكم الوسوسة في الوضوء؟
+38,Prayer and purification,هل ينتقض الوضوء بلمس المرأة؟
+39,Prayer and purification,هل ينتقض الوضوء بخروج الدم؟
+40,Prayer and purification,ما حكم المسح على الجوربين؟
+41,Prayer and purification,ما شروط المسح على الخفين؟
+42,Prayer and purification,ما حكم من نام جالساً ثم صلى دون وضوء؟
+43,Prayer and purification,هل يجب الترتيب في الوضوء؟
+44,Prayer and purification,ما حكم ترك التسمية قبل الوضوء نسياناً؟
+45,Prayer and purification,كيف يتطهر من عجز عن استعمال الماء؟
+46,Prayer and purification,متى يجوز التيمم مع وجود الماء؟
+47,Prayer and purification,ما حكم الجمع بين الصلاتين بسبب المطر؟
+48,Prayer and purification,ما حكم قصر الصلاة للمسافر؟
+49,Prayer and purification,ما المسافة التي يجوز فيها قصر الصلاة؟
+50,Prayer and purification,متى يبدأ المسافر بالقصر ومتى ينتهي؟
+51,Prayer and purification,هل يجوز للمسافر أن يتم الصلاة خلف إمام مقيم؟
+52,Prayer and purification,ما حكم صلاة الجماعة في المسجد للرجال؟
+53,Prayer and purification,ما حكم من أدرك الإمام في الركوع؟
+54,Prayer and purification,كيف يقضي المسبوق ما فاته من الصلاة؟
+55,Prayer and purification,ما حكم رفع اليدين عند الركوع والرفع منه؟
+56,Prayer and purification,ما حكم قراءة الفاتحة للمأموم خلف الإمام؟
+57,Prayer and purification,أين يضع المصلي يديه في القيام؟
+58,Prayer and purification,ما حكم تحريك السبابة في التشهد؟
+59,Prayer and purification,ما حكم الصلاة على النبي صلى الله عليه وسلم في التشهد الأخير؟
+60,Prayer and purification,ما حكم سجود السهو إذا نسي المصلي واجباً؟
+61,Prayer and purification,ماذا يفعل من شك بعد الصلاة في أنه ترك ركناً؟
+62,Prayer and purification,ما حكم الصلاة في مكان فيه صور؟
+63,Prayer and purification,هل تصح الصلاة خلف إمام يقع في بدعة؟
+64,Prayer and purification,ما حكم صلاة الوتر وكم أقل عدد ركعاتها؟
+65,Prayer and purification,ما أفضل وقت لصلاة الوتر؟
+66,Prayer and purification,ما حكم صلاة الضحى؟
+67,Prayer and purification,هل تقضي المرأة الصلاة التي تركتها أثناء الحيض؟
+68,Prayer and purification,ما حكم الصلاة مع مدافعة البول أو الغائط؟
+69,Prayer and purification,ما حكم الصلاة في الثوب الضيق؟
+70,Prayer and purification,هل يجوز المرور أمام المصلي؟
+71,"Fasting, zakat, and hajj",ما مبطلات الصيام؟
+72,"Fasting, zakat, and hajj",هل يفطر الصائم إذا أكل ناسياً؟
+73,"Fasting, zakat, and hajj",ما حكم استعمال بخاخ الربو في نهار رمضان؟
+74,"Fasting, zakat, and hajj",هل قطرة العين تفطر الصائم؟
+75,"Fasting, zakat, and hajj",ما حكم استعمال معجون الأسنان أثناء الصيام؟
+76,"Fasting, zakat, and hajj",ما حكم من جامع زوجته في نهار رمضان؟
+77,"Fasting, zakat, and hajj",ما حكم من أفطر في رمضان بسبب المرض؟
+78,"Fasting, zakat, and hajj",متى يجب على المريض القضاء ومتى تكون عليه الفدية؟
+79,"Fasting, zakat, and hajj",ما حكم صيام من نام معظم النهار؟
+80,"Fasting, zakat, and hajj",هل يجوز صيام يوم الجمعة منفرداً؟
+81,"Fasting, zakat, and hajj",ما حكم صيام يوم عرفة لغير الحاج؟
+82,"Fasting, zakat, and hajj",ما حكم صيام عاشوراء دون صيام يوم قبله أو بعده؟
+83,"Fasting, zakat, and hajj",ما حكم صيام الست من شوال قبل قضاء رمضان؟
+84,"Fasting, zakat, and hajj",ما حكم من أخر قضاء رمضان حتى دخل رمضان التالي؟
+85,"Fasting, zakat, and hajj",هل يجوز للحامل والمرضع الإفطار في رمضان؟
+86,"Fasting, zakat, and hajj",ما حكم السحور بعد أذان الفجر ظناً أن الوقت لم يدخل؟
+87,"Fasting, zakat, and hajj",ما حكم الإفطار اعتماداً على أذان المغرب في بلد آخر؟
+88,"Fasting, zakat, and hajj",على من تجب زكاة المال؟
+89,"Fasting, zakat, and hajj",ما النصاب الواجب في زكاة النقود؟
+90,"Fasting, zakat, and hajj",كيف تحسب زكاة الذهب المدخر للزينة؟
+91,"Fasting, zakat, and hajj",هل تجب الزكاة في مال الدين؟
+92,"Fasting, zakat, and hajj",ما حكم إخراج الزكاة للأخ الفقير؟
+93,"Fasting, zakat, and hajj",هل يجوز دفع الزكاة لبناء مسجد؟
+94,"Fasting, zakat, and hajj",هل يجوز إخراج زكاة الفطر نقداً؟
+95,"Fasting, zakat, and hajj",متى يخرج المسلم زكاة الفطر؟
+96,"Fasting, zakat, and hajj",هل تجب زكاة الفطر على الجنين؟
+97,"Fasting, zakat, and hajj",ما حكم تأخير زكاة المال بعد وجوبها؟
+98,"Fasting, zakat, and hajj",ما شروط وجوب الحج؟
+99,"Fasting, zakat, and hajj",هل يجوز الحج بمال اقترضه المسلم؟
+100,"Fasting, zakat, and hajj",ما حكم حج المرأة دون محرم؟
+101,"Fasting, zakat, and hajj",ما حكم من ترك المبيت بمزدلفة؟
+102,"Fasting, zakat, and hajj",ما حكم من قدم السعي على الطواف في الحج؟
+103,"Fasting, zakat, and hajj",ماذا يلزم من ترك واجباً من واجبات الحج؟
+104,"Fasting, zakat, and hajj",ما حكم من تجاوز الميقات دون إحرام؟
+105,"Fasting, zakat, and hajj",هل يجوز للمحرم استعمال الصابون المعطر؟
+106,"Fasting, zakat, and hajj",ما حكم قص الشعر أو الأظافر للمحرم؟
+107,"Fasting, zakat, and hajj",هل يجوز للمرأة أن تستعمل النقاب والقفازين أثناء الإحرام؟
+108,"Fasting, zakat, and hajj",ما حكم النيابة في الحج عن الميت؟
+109,"Fasting, zakat, and hajj",ما حكم تكرار العمرة في السفرة الواحدة؟
+110,"Fasting, zakat, and hajj",هل يجوز تأخير طواف الإفاضة إلى وقت السفر؟
+111,Marriage and family,ما شروط صحة عقد الزواج؟
+112,Marriage and family,هل يشترط رضا المرأة لصحة الزواج؟
+113,Marriage and family,ما حكم الزواج دون ولي؟
+114,Marriage and family,ما حكم إجبار الفتاة على الزواج؟
+115,Marriage and family,ما حكم تأخير الزواج بسبب الدراسة؟
+116,Marriage and family,ما حكم النظر إلى المخطوبة قبل العقد؟
+117,Marriage and family,ما حدود الكلام بين الخاطب والمخطوبة؟
+118,Marriage and family,هل يجوز للخاطب الخلوة بمخطوبته؟
+119,Marriage and family,ما حكم اشتراط الزوجة إكمال دراستها في عقد الزواج؟
+120,Marriage and family,ما حكم منع الزوج زوجته من زيارة أهلها؟
+121,Marriage and family,ما حقوق الزوجة على زوجها؟
+122,Marriage and family,ما حقوق الزوج على زوجته؟
+123,Marriage and family,ما حكم امتناع الزوج عن النفقة مع قدرته؟
+124,Marriage and family,هل يجب على الزوج علاج زوجته ودفع تكاليف علاجها؟
+125,Marriage and family,ما حكم أخذ الزوج من مال زوجته دون رضاها؟
+126,Marriage and family,هل يجوز للزوجة العمل دون إذن زوجها؟
+127,Marriage and family,ما حكم سفر المرأة وحدها للدراسة أو العمل؟
+128,Marriage and family,ما حكم تنظيم النسل باستعمال موانع الحمل؟
+129,Marriage and family,ما حكم تحديد النسل نهائياً دون ضرورة؟
+130,Marriage and family,ما حكم الطلاق في حال الغضب الشديد؟
+131,Marriage and family,ما حكم الطلاق المعلق على شرط؟
+132,Marriage and family,هل يقع الطلاق بالكتابة أو الرسائل؟
+133,Marriage and family,ما حكم الطلاق الثلاث بلفظ واحد؟
+134,Marriage and family,ما عدة المرأة المطلقة قبل الدخول؟
+135,Marriage and family,ما عدة المرأة التي تحيض بعد الطلاق؟
+136,Marriage and family,ما عدة المرأة التي لا تحيض؟
+137,Marriage and family,ما عدة المتوفى عنها زوجها؟
+138,Marriage and family,ما حكم رجعة الزوج لزوجته أثناء العدة؟
+139,Marriage and family,ما حكم الخلع إذا كرهت المرأة الحياة مع زوجها؟
+140,Marriage and family,هل يجوز للزوجة طلب الطلاق بسبب الضرر؟
+141,Marriage and family,ما حكم حضانة الأطفال بعد الطلاق؟
+142,Marriage and family,من أحق بحضانة الطفل إذا تزوجت أمه؟
+143,Marriage and family,ما حكم منع الأب من رؤية أولاده بعد الطلاق؟
+144,Marriage and family,ما حكم تسمية المولود باسم محرم المعنى؟
+145,Marriage and family,ما حكم العقيقة عن المولود؟
+146,Marriage and family,هل يجوز حلق شعر المولود والتصدق بوزنه فضة؟
+147,Marriage and family,ما حكم عقوق الوالدين إذا أمرا بمعصية؟
+148,Marriage and family,هل يجب طاعة الوالدين في اختيار التخصص أو الوظيفة؟
+149,Marriage and family,ما حكم قطع الرحم بسبب أذى الأقارب؟
+150,Marriage and family,ما حكم هجر أحد الوالدين بسبب خلاف عائلي؟
+151,"Business, finance, and work",ما حكم العمل في بنك ربوي؟
+152,"Business, finance, and work",ما حكم العمل في شركة تتعامل بالربا مع كون عملي مباحاً؟
+153,"Business, finance, and work",ما حكم أخذ قرض بفائدة لشراء منزل؟
+154,"Business, finance, and work",ما حكم شراء سيارة بالتقسيط بسعر أعلى من النقد؟
+155,"Business, finance, and work",ما شروط البيع بالتقسيط الجائز؟
+156,"Business, finance, and work",ما حكم بيع الذهب بالتقسيط؟
+157,"Business, finance, and work",ما حكم تداول العملات عبر منصات الفوركس؟
+158,"Business, finance, and work",ما حكم الاستثمار في الأسهم؟
+159,"Business, finance, and work",كيف يعرف المسلم أن أسهم شركة ما مباحة؟
+160,"Business, finance, and work",ما حكم الاستثمار في شركة نشاطها مباح لكنها تقترض بالربا؟
+161,"Business, finance, and work",ما حكم العملات الرقمية والتداول بها؟
+162,"Business, finance, and work",ما حكم المضاربة بالرافعة المالية؟
+163,"Business, finance, and work",ما حكم التأمين التجاري؟
+164,"Business, finance, and work",ما حكم التأمين الصحي الذي توفره جهة العمل؟
+165,"Business, finance, and work",ما حكم العمل في شركة تبيع بعض المنتجات المحرمة؟
+166,"Business, finance, and work",ما حكم العمل في متجر يبيع السجائر؟
+167,"Business, finance, and work",ما حكم أخذ عمولة مقابل الوساطة في البيع؟
+168,"Business, finance, and work",ما حكم التسويق بالعمولة عبر الإنترنت؟
+169,"Business, finance, and work",ما حكم التسويق الشبكي؟
+170,"Business, finance, and work",ما حكم البيع قبل تملك السلعة؟
+171,"Business, finance, and work",ما حكم بيع شيء لا يستطيع البائع تسليمه؟
+172,"Business, finance, and work",ما حكم بيع السلع مع إخفاء العيوب؟
+173,"Business, finance, and work",ما حكم الغش في التجارة؟
+174,"Business, finance, and work",ما حكم الاحتكار ورفع الأسعار وقت الأزمات؟
+175,"Business, finance, and work",ما حكم تأخير دفع أجرة العامل؟
+176,"Business, finance, and work",هل يجوز لصاحب العمل خصم جزء من راتب الموظف بسبب خطأ؟
+177,"Business, finance, and work",ما حكم العمل في تصميم إعلانات لمنتجات محرمة؟
+178,"Business, finance, and work",ما حكم استخدام برامج مقرصنة في العمل؟
+179,"Business, finance, and work",ما حكم نسخ الدورات المدفوعة ونشرها مجاناً؟
+180,"Business, finance, and work",ما حكم أخذ أجر على تعليم القرآن؟
+181,"Business, finance, and work",ما حكم العمل الحر مع عميل لا يلتزم بالشروط؟
+182,"Business, finance, and work",ما حكم كتابة الأبحاث الجامعية للآخرين مقابل المال؟
+183,"Business, finance, and work",ما حكم الكذب في السيرة الذاتية للحصول على وظيفة؟
+184,"Business, finance, and work",ما حكم العمل في مجال الذكاء الاصطناعي إذا كان بعض استخداماته محرماً؟
+185,"Business, finance, and work",ما حكم استخدام الذكاء الاصطناعي لإنجاز واجب دراسي؟
+186,"Business, finance, and work",ما حكم المسابقات التي تشترط دفع رسوم للدخول والفوز بجائزة؟
+187,"Business, finance, and work",ما حكم الجوائز التي تقدمها البنوك لعملائها؟
+188,"Business, finance, and work",ما حكم الاقتراض من شخص ثم رد مبلغ زائد دون شرط سابق؟
+189,"Business, finance, and work",ما حكم بيع الدين لشخص آخر؟
+190,"Business, finance, and work",ما حكم العربون في البيع؟
+191,"Food, clothing, and daily conduct",ما حكم أكل اللحوم المستوردة من بلاد غير إسلامية؟
+192,"Food, clothing, and daily conduct",ما حكم أكل ذبائح أهل الكتاب؟
+193,"Food, clothing, and daily conduct",ما حكم الأطعمة التي تحتوي على جيلاتين مجهول المصدر؟
+194,"Food, clothing, and daily conduct",ما حكم استعمال المنتجات التي تحتوي على نسبة من الكحول؟
+195,"Food, clothing, and daily conduct",ما حكم تناول الأدوية التي تحتوي على الكحول؟
+196,"Food, clothing, and daily conduct",ما حكم أكل الحشرات؟
+197,"Food, clothing, and daily conduct",ما حكم أكل لحم الضبع؟
+198,"Food, clothing, and daily conduct",ما حكم أكل الحيوانات المفترسة؟
+199,"Food, clothing, and daily conduct",ما حكم الذبح الآلي في المسالخ؟
+200,"Food, clothing, and daily conduct",ما حكم الأكل في أواني الذهب والفضة؟
+201,"Food, clothing, and daily conduct",ما حكم الإسراف في الطعام والشراب؟
+202,"Food, clothing, and daily conduct",ما حكم إلقاء الطعام الصالح في القمامة؟
+203,"Food, clothing, and daily conduct",ما حكم لبس الذهب للرجال؟
+204,"Food, clothing, and daily conduct",ما حكم لبس الحرير الطبيعي للرجال؟
+205,"Food, clothing, and daily conduct",ما حكم إسبال الثوب للرجال؟
+206,"Food, clothing, and daily conduct",ما حكم لبس الملابس التي عليها صور ذوات الأرواح؟
+207,"Food, clothing, and daily conduct",ما حكم لبس الملابس التي تحمل شعارات دينية لغير المسلمين؟
+208,"Food, clothing, and daily conduct",ما حكم حلق اللحية؟
+209,"Food, clothing, and daily conduct",ما حكم تقصير اللحية وأخذ شيء منها؟
+210,"Food, clothing, and daily conduct",ما حكم صبغ الشعر بالسواد؟
+211,"Food, clothing, and daily conduct",ما حكم الوشم الدائم؟
+212,"Food, clothing, and daily conduct",ما حكم إزالة شعر الوجه للمرأة؟
+213,"Food, clothing, and daily conduct",ما حكم النمص؟
+214,"Food, clothing, and daily conduct",ما حكم وصل الشعر أو استعمال الشعر المستعار؟
+215,"Food, clothing, and daily conduct",ما حكم لبس العدسات الملونة للزينة؟
+216,"Food, clothing, and daily conduct",ما حكم لبس المرأة لباساً ضيقاً أمام النساء؟
+217,"Food, clothing, and daily conduct",ما شروط الحجاب الشرعي للمرأة؟
+218,"Food, clothing, and daily conduct",ما حكم وضع العطر للمرأة عند الخروج؟
+219,"Food, clothing, and daily conduct",ما حكم مصافحة المرأة الأجنبية؟
+220,"Food, clothing, and daily conduct",ما حكم الاختلاط في الدراسة والعمل؟
+221,"Food, clothing, and daily conduct",ما حكم الغيبة والنميمة؟
+222,"Food, clothing, and daily conduct",ما حكم نقل الكلام للإصلاح بين الناس؟
+223,"Food, clothing, and daily conduct",ما حكم الكذب للمزاح؟
+224,"Food, clothing, and daily conduct",ما حكم المزاح الذي يتضمن تخويف المسلم؟
+225,"Food, clothing, and daily conduct",ما حكم تصوير الأشخاص بالهاتف؟
+226,"Food, clothing, and daily conduct",ما حكم رسم ذوات الأرواح؟
+227,"Food, clothing, and daily conduct",ما حكم اقتناء الصور للذكرى؟
+228,"Food, clothing, and daily conduct",ما حكم الاستماع إلى الموسيقى والأغاني؟
+229,"Food, clothing, and daily conduct",ما حكم مشاهدة الأفلام والمسلسلات التي تحتوي على محرمات؟
+230,"Food, clothing, and daily conduct",ما حكم الألعاب الإلكترونية التي تحتوي على موسيقى أو صور محرمة؟
+231,"Quran, hadith, knowledge, and worship",ما حكم قراءة القرآن دون وضوء من الهاتف؟
+232,"Quran, hadith, knowledge, and worship",هل يجوز للجنب قراءة القرآن من الهاتف؟
+233,"Quran, hadith, knowledge, and worship",ما حكم مس المصحف دون وضوء؟
+234,"Quran, hadith, knowledge, and worship",ما حكم قراءة القرآن للحائض؟
+235,"Quran, hadith, knowledge, and worship",ما حكم سجود التلاوة للقارئ والمستمع؟
+236,"Quran, hadith, knowledge, and worship",ما حكم ختم القرآن في أقل من ثلاثة أيام؟
+237,"Quran, hadith, knowledge, and worship",ما حكم تخصيص يوم معين لقراءة سورة الكهف؟
+238,"Quran, hadith, knowledge, and worship",ما حكم قراءة سورة يس لقضاء الحوائج؟
+239,"Quran, hadith, knowledge, and worship",هل ثبت فضل قراءة سورة الملك كل ليلة؟
+240,"Quran, hadith, knowledge, and worship",ما حكم الاجتماع على قراءة القرآن بصوت واحد؟
+241,"Quran, hadith, knowledge, and worship",ما حكم أخذ الأجرة على تعليم القرآن؟
+242,"Quran, hadith, knowledge, and worship",ما حكم تفسير القرآن بالرأي دون علم؟
+243,"Quran, hadith, knowledge, and worship",كيف يتعامل المسلم مع الأحاديث الضعيفة؟
+244,"Quran, hadith, knowledge, and worship",هل يجوز العمل بالحديث الضعيف في فضائل الأعمال؟
+245,"Quran, hadith, knowledge, and worship",كيف يعرف المسلم صحة الحديث؟
+246,"Quran, hadith, knowledge, and worship",ما حكم نشر حديث قبل التحقق من صحته؟
+247,"Quran, hadith, knowledge, and worship",ما حكم رواية الحديث بالمعنى؟
+248,"Quran, hadith, knowledge, and worship",ما حكم الكذب على النبي صلى الله عليه وسلم ولو على سبيل المزاح؟
+249,"Quran, hadith, knowledge, and worship",ما حكم الاحتفال بالمولد النبوي؟
+250,"Quran, hadith, knowledge, and worship",ما حكم تخصيص ليلة النصف من شعبان بعبادة معينة؟
