@@ -109,7 +109,47 @@ OPENROUTER_DECISIONS_URL = "https://openrouter.ai/api/alpha/decisions"
 
 PROVIDER_GEMINI = "Gemini"
 PROVIDER_OPENROUTER = "OpenRouter"
+PROVIDER_LAYA = "Fine-Tuned Laya (Local / Free)"
 PROVIDERS = [PROVIDER_GEMINI, PROVIDER_OPENROUTER]
+JUDGE_PROVIDERS = [PROVIDER_LAYA, PROVIDER_GEMINI, PROVIDER_OPENROUTER]
+
+LAYA_MODELS = [
+    "ZenoAbderrahim/laya-multilingual-fatwa-relevance",
+    "convaiinnovations/laya-multilingual",
+]
+DEFAULT_LAYA_MODEL = LAYA_MODELS[0]
+
+LAYA_QUESTION_SCHEMA = {
+    "relevance": {
+        "type": "choice",
+        "instructions": (
+            "Determine whether the Islamic fatwa directly and specifically answers the user's question.\n"
+            "- 'answers-it': The fatwa directly and specifically answers the question asked.\n"
+            "- 'does-not-answer': The fatwa does NOT directly answer the question (touches on a related topic or is unrelated)."
+        ),
+        "criteria": {
+            "answers-it": "The fatwa directly answers the specific question asked.",
+            "does-not-answer": "The fatwa does not directly answer the question.",
+        },
+    }
+}
+
+_LAYA_AGENTS: dict[tuple[str, str], Any] = {}
+
+
+def get_laya_agent(model_id: str = DEFAULT_LAYA_MODEL, device: str = "cpu") -> Any:
+    key = (model_id, device)
+    if key not in _LAYA_AGENTS:
+        try:
+            import laya
+        except ImportError:
+            raise RuntimeError(
+                "The 'laya' package is required for local judging. Run 'pip install laya' or select Gemini / OpenRouter."
+            )
+        print(f"Loading Laya Agent '{model_id}' on device '{device}'...")
+        _LAYA_AGENTS[key] = laya.load(model_id, device=device)
+        print(f"✓ Laya Agent '{model_id}' ready on {device}.")
+    return _LAYA_AGENTS[key]
 
 GEMINI_MODELS = [
     "gemini-2.5-flash",
@@ -183,15 +223,17 @@ SEARCH_MODES = [
 ]
 
 # Verdicts for individual fatwas
-VERDICTS = ["answers-it", "related-only", "unrelated"]
+VERDICTS = ["answers-it", "does-not-answer", "related-only", "unrelated"]
 VERDICT_LABELS = {
     "answers-it": "Answers it",
+    "does-not-answer": "Does not answer",
     "related-only": "Related only",
     "unrelated": "Unrelated",
     "unknown": "Unknown",
 }
 VERDICT_ICONS = {
     "answers-it": "✓",
+    "does-not-answer": "✕",
     "related-only": "≈",
     "unrelated": "✕",
     "unknown": "?",
@@ -231,12 +273,16 @@ JEV_CONSENSUS_CRITERIA = {
 
 
 def models_for(task: str, provider: str) -> list[str]:
+    if provider == PROVIDER_LAYA:
+        return list(LAYA_MODELS)
     if provider == PROVIDER_GEMINI:
         return list(GEMINI_MODELS)
     return get_openrouter_models()
 
 
 def default_model_for(task: str, provider: str) -> str:
+    if provider == PROVIDER_LAYA:
+        return DEFAULT_LAYA_MODEL
     if provider == PROVIDER_GEMINI:
         return GEMINI_MODELS[0]
     return "google/gemini-2.5-flash"
@@ -558,6 +604,7 @@ class FatwaApp:
         print(f"Data dir: {settings.data_dir}")
         print(f"Embedder device: {settings.device_embedder}")
         print(f"Reranker device: {settings.device_reranker}")
+        print(f"Judge device: {settings.device_judge}")
 
         self.df, self.corpus_embeddings, self.embedding_meta = load_project_assets(settings.data_dir)
         self.available_scholars = sorted(self.df["source"].dropna().unique().tolist())
@@ -649,12 +696,68 @@ class FatwaApp:
     def judge_candidates(
         self, provider: str, model: str, user_query: str, candidates: pd.DataFrame, max_chars: int
     ) -> tuple[dict[int, FatwaJudgement], dict[str, Any]]:
+        if provider == PROVIDER_LAYA:
+            return self._judge_laya(model, user_query, candidates, max_chars)
         if provider == PROVIDER_GEMINI:
             return self._judge_gemini(model, user_query, candidates, max_chars)
         key = self.ensure_openrouter()
         if is_jev_model(model):
             return self._judge_jev(key, model, user_query, candidates, max_chars)
         return self._judge_openrouter_chat(key, model, user_query, candidates, max_chars)
+
+    def _judge_laya(
+        self, model: str, user_query: str, candidates: pd.DataFrame, max_chars: int
+    ) -> tuple[dict[int, FatwaJudgement], dict[str, Any]]:
+        judge_device = getattr(getattr(self, "s", None), "device_judge", "cpu")
+        agent = get_laya_agent(model, device=judge_device)
+        out: dict[int, FatwaJudgement] = {}
+        for row in candidates.itertuples(index=False):
+            fid = int(row.fatwa_id)
+            state = {
+                "user_query": str(user_query or "").strip(),
+                "scholar": str(row.source).strip(),
+                "fatwa_title": str(row.title).strip(),
+                "fatwa_answer": str(row.answer)[:max_chars].strip(),
+            }
+            try:
+                res = agent.predict(state, LAYA_QUESTION_SCHEMA)
+                ans = res.get("answers", {}).get("relevance", {})
+                choice = str(ans.get("choice", "unknown")).strip()
+                probs = ans.get("probabilities", {}) or {}
+                conf = ans.get("answer_confidence")
+                if conf is None and probs and choice in probs:
+                    conf = probs[choice]
+                elif conf is None:
+                    conf = ans.get("confidence")
+
+                p_ans = (
+                    probs.get("answers-it", 0.0)
+                    if probs
+                    else (conf if choice == "answers-it" else (1.0 - conf if conf else 0.0))
+                )
+                p_ans_pct = f"{p_ans * 100:.1f}%"
+                is_direct = choice == "answers-it"
+                explanation = (
+                    f"Laya neural verdict: {'Direct Answer' if is_direct else 'Does Not Answer'} "
+                    f"(P(answers-it) = {p_ans_pct})"
+                )
+                out[fid] = FatwaJudgement(
+                    verdict=choice,
+                    confidence=conf,
+                    answer="",
+                    explanation=explanation,
+                    probabilities=probs,
+                )
+            except Exception as e:
+                out[fid] = FatwaJudgement(
+                    verdict="unknown",
+                    confidence=None,
+                    answer="",
+                    explanation=f"Laya error: {e}",
+                )
+
+        usage = usage_dict(prompt=0, completion=0, total=0, cost=0.0)
+        return out, usage
 
     def _judge_gemini(self, model, user_query, candidates, max_chars):
         client = self.ensure_gemini()
@@ -1294,6 +1397,7 @@ class Settings:
     data_dir: Path
     device_embedder: str
     device_reranker: str
+    device_judge: str = "cpu"
     warmup: bool = True
 
 
@@ -1322,7 +1426,12 @@ def esc(value: Any) -> str:
 
 
 def verdict_badge_class(verdict: str) -> str:
-    return {"answers-it": "good", "related-only": "warn", "unrelated": "bad"}.get(verdict, "neutral")
+    return {
+        "answers-it": "good",
+        "does-not-answer": "bad",
+        "related-only": "warn",
+        "unrelated": "bad",
+    }.get(verdict, "neutral")
 
 
 def verdict_badge(verdict: str) -> str:
@@ -1499,13 +1608,13 @@ def judge_box(judge: FatwaJudgement) -> str:
     body = []
     if judge.answer:
         body.append(
-            f'<div class="fq-judge-answer fq-ar" dir="rtl">{esc(judge.answer)}</div>'
+            f'<div class="fq-judge-answer fq-ar" dir="auto">{esc(judge.answer)}</div>'
         )
     if judge.explanation:
         body.append(
-            f'<div class="fq-judge-exp fq-ar" dir="rtl">{esc(judge.explanation)}</div>'
+            f'<div class="fq-judge-exp fq-ar" dir="auto">{esc(judge.explanation)}</div>'
         )
-    if not body:
+    if not body and not judge.verdict:
         return ""
     return (
         f'<section class="fq-judge">'
@@ -1865,6 +1974,7 @@ def build_ui(app: FatwaApp) -> gr.Blocks:
     n_fatwas = len(app.df) if hasattr(app, "df") else 0
     emb_dev = getattr(getattr(app, "s", None), "device_embedder", "?")
     rer_dev = getattr(getattr(app, "s", None), "device_reranker", "?")
+    judge_dev = getattr(getattr(app, "s", None), "device_judge", "?")
     available_scholars = getattr(app, "available_scholars", ["Ibn Baz"])
 
     def key_chip(env: str, name: str) -> str:
@@ -2008,7 +2118,12 @@ def build_ui(app: FatwaApp) -> gr.Blocks:
                 "<div class='fq-side-sub'>Configure AI features, models, retrieval pools and filters.</div>",
                 elem_classes="fq-flat",
             )
-            with gr.Accordion("API Keys (Optional Overrides)", open=True):
+            with gr.Accordion("API Keys (Optional Overrides)", open=False):
+                gr.Markdown(
+                    "**Zero API Keys Needed for Core Search & Verification!**\n\n"
+                    "• Semantic search (`Qwen 0.6B`), Cross-Encoder reranking (`Mizan V2`), and **Fine-Tuned Laya Judge** run 100% locally & free.\n"
+                    "• API keys below are optional: provide them only if you wish to use Google Gemini or OpenRouter for Query Rewriting, LLM Judging, Consensus Classification, or Comparative Summary."
+                )
                 gemini_key_input = gr.Textbox(
                     value=os.getenv(GEMINI_API_KEY_ENV, ""),
                     type="password",
@@ -2036,13 +2151,13 @@ def build_ui(app: FatwaApp) -> gr.Blocks:
                 )
             with gr.Accordion("Fatwa Verdict Judge", open=True):
                 judge_enabled = gr.Checkbox(
-                    value=bool(os.getenv(GEMINI_API_KEY_ENV) or os.getenv(OPENROUTER_API_KEY_ENV)),
+                    value=True,
                     label="Judge each result",
-                    info="An LLM checks whether each fatwa answers the question.",
+                    info="Evaluates whether each fatwa directly answers the question (Free & local with Laya, or via LLM).",
                 )
-                judge_provider = gr.Radio(PROVIDERS, value=PROVIDER_GEMINI, label="Provider")
+                judge_provider = gr.Radio(JUDGE_PROVIDERS, value=PROVIDER_LAYA, label="Provider")
                 judge_model = gr.Dropdown(
-                    models_for("judge", PROVIDER_GEMINI), value=default_model_for("judge", PROVIDER_GEMINI),
+                    models_for("judge", PROVIDER_LAYA), value=default_model_for("judge", PROVIDER_LAYA),
                     label="Model (Search or enter any slug)", allow_custom_value=True, filterable=True,
                 )
             with gr.Accordion("AI Consensus & Summary", open=True):
@@ -2086,6 +2201,7 @@ def build_ui(app: FatwaApp) -> gr.Blocks:
                     "<dl class='fq-sys' style='margin-top:12px'>"
                     f"<dt>Embedder</dt><dd>{esc(EMBEDDER_MODEL_NAME)} · {esc(emb_dev)}</dd>"
                     f"<dt>Reranker</dt><dd>{esc(RERANKER_MODEL_NAME)} · {esc(rer_dev)}</dd>"
+                    f"<dt>Judge</dt><dd>{esc(DEFAULT_LAYA_MODEL.split('/')[-1])} · {esc(judge_dev)}</dd>"
                     f"<dt>Corpus</dt><dd>{n_fatwas:,} fatwas · {len(available_scholars)} scholars</dd></dl>",
                     elem_classes="fq-flat",
                 )
@@ -2215,7 +2331,7 @@ def build_ui(app: FatwaApp) -> gr.Blocks:
         def reset_settings():
             return (
                 True, PROVIDER_GEMINI, default_model_for("rewrite", PROVIDER_GEMINI),
-                True, PROVIDER_GEMINI, default_model_for("judge", PROVIDER_GEMINI),
+                True, PROVIDER_LAYA, default_model_for("judge", PROVIDER_LAYA),
                 True, PROVIDER_GEMINI, default_model_for("consensus", PROVIDER_GEMINI),
                 True, PROVIDER_GEMINI, default_model_for("summary", PROVIDER_GEMINI),
                 DEFAULT_RETRIEVE_K, DEFAULT_RERANK_POOL, DEFAULT_SHOW_N,
@@ -2311,6 +2427,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--no-download", action="store_true", help="Do not fetch missing data files from Hugging Face.")
     parser.add_argument("--embedder-device", choices=["cpu", "cuda", "auto"], default="cpu", help="Embedder device.")
     parser.add_argument("--reranker-device", choices=["auto", "cuda", "cpu"], default="auto", help="Reranker device.")
+    parser.add_argument("--judge-device", choices=["auto", "cuda", "cpu"], default="auto", help="Judge device for local Laya model.")
     parser.add_argument("--no-warmup", action="store_true", help="Skip the startup warmup query.")
     parser.add_argument("--host", default="127.0.0.1", help="Bind address (default 127.0.0.1).")
     parser.add_argument("--port", type=int, default=7860, help="Port (default 7860).")
@@ -2329,6 +2446,7 @@ def main(argv: list[str] | None = None) -> int:
         data_dir=args.data_dir,
         device_embedder=default_device(args.embedder_device),
         device_reranker=default_device(args.reranker_device),
+        device_judge=default_device(args.judge_device),
         warmup=not args.no_warmup,
     )
 
