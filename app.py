@@ -1807,8 +1807,9 @@ footer { display:none !important; }
   padding:12px 16px !important; background:transparent !important; border:none !important; box-shadow:none !important; }
 #fq-query textarea::placeholder { font-family:var(--fq-sans); font-size:1rem; color:var(--fq-muted); }
 #fq-query button { background:var(--fq-accent) !important; color:#fff !important; border-radius:14px !important; }
-#fq-examples { gap:8px !important; flex-wrap:wrap !important; margin:12px 2px 0; align-items:center; }
-#fq-examples > * { min-width:0 !important; flex:0 0 auto !important; width:auto !important; }
+#fq-examples { display:flex !important; gap:10px !important; margin:12px 2px 0; align-items:flex-end; }
+#fq-examples .fq-ex-dropdown { flex:1 1 auto !important; min-width:0 !important; }
+#fq-examples .fq-ex-clear { flex:0 0 auto !important; height:42px !important; padding:0 18px !important; border-radius:12px !important; margin-bottom:2px; }
 .fq-ex-label { font-size:.78rem; color:var(--fq-muted); text-transform:uppercase; letter-spacing:.08em; font-weight:700; padding-right:4px; }
 .fq-ex { border-radius:999px !important; background:var(--fq-surface) !important; border:1px solid var(--fq-line) !important;
   color:var(--fq-ink) !important; font-weight:500 !important; padding:6px 14px !important; font-size:.88rem !important; box-shadow:none !important; }
@@ -1958,10 +1959,38 @@ LOADING_QUERY = (
 LOADING_RESULTS = '<div class="fq-empty"><div class="fq-spin" style="margin:0 auto 12px"></div><div class="fq-empty-title">Retrieving & analyzing…</div></div>'
 
 EXAMPLE_QUERIES = [
-    "كيف أكفر عن يمينٍ حلفتها ثم حنثت؟",
-    "ما حكم صلاة الجماعة في المسجد؟",
-    "هل يجوز إخراج زكاة الفطر نقداً؟",
-    "What is the ruling on paying zakat on gold?",
+    # الطهارة والصلاة
+    "ما حكم صلاة الجماعة في المسجد للرجال وهل هي فرض عين؟",
+    "كيف أكفر عن يمينٍ حلفتها ثم حنثت فيها؟",
+    "هل صلاة الوتر واجبة أم سنة مؤكدة وما هو وقتها وصفتها؟",
+    "ما حكم من نسي التشهد الأول في الصلاة وسجد للسهو؟",
+    "ما حكم الوضوء مع وجود طلاء الأظافر أو الحناء على اليدين؟",
+    "هل لمس المرأة الأجنبية ينقض الوضوء بشهوة أو بدون شهوة؟",
+    "ما حكم تارك الصلاة تهاوناً وكسلاً عند جمهور أهل العلم؟",
+    "هل يجوز قصر الصلاة وجمعها للمسافر بمجرد خروجه من البلد؟",
+    # الزكاة والصيام
+    "هل يجوز إخراج زكاة الفطر نقداً أم يجب إخراجها قوتاً وطعاماً؟",
+    "ما حكم زكاة الذهب والحلي المعد للاستعمال والزينة الشخصية؟",
+    "هل بخاخ الربو وقطرة العين والأذن تفسد صيام رمضان؟",
+    "ما حكم من أكل أو شرب ناسياً في نهار رمضان هل يقضي؟",
+    "هل يجوز صيام ست من شوال قبل قضاء ما فات من أيام رمضان؟",
+    # الحج والعمرة
+    "ما حكم من ترك طواف الوداع في الحج لعذر أو لجهل بحكمه؟",
+    "هل يجوز للمرأة السفر لأداء الحج أو العمرة بدون محرم؟",
+    "ما هي صفة التمتع في الحج وما الفدية الواجبة على المتمتع؟",
+    # المعاملات المالية والمسائل المعاصرة
+    "ما حكم شراء الذهب والفضة عبر الإنترنت بالبطاقة الائتمانية؟",
+    "ما حكم التأمين التجاري على السيارات والتأمين الصحي والتكافلي؟",
+    "ما حكم التداول بالعملات الرقمية والمشفرة (كالبيتكوين)؟",
+    "ما حكم العمل في البنوك الربوية في وظائف الحراسة أو البرمجة؟",
+    # الأسرة والأحكام العامة
+    "هل يشترط إذن الولي ورضاه في نكاح الثيب والبكر؟",
+    "ما حكم قراءة القرآن للحائض والنفساء من المصحف أو الهاتف؟",
+    "ما حكم الرقية الشرعية وأخذ الأجرة عليها؟",
+    # أسئلة باللغة الإنجليزية (لتجربة الترجمة والبحث العابر للغات)
+    "What is the ruling on paying zakat on jewelry worn by women?",
+    "Is it permissible to combine prayers due to severe rain or illness?",
+    "What should a person do if they forgot a prostration in prayer?",
 ]
 
 
@@ -2075,14 +2104,19 @@ def build_ui(app: FatwaApp) -> gr.Blocks:
                     info="اختر أي عدد من العلماء للبحث في فتاواهم",
                 )
 
-        # ---- example queries -----------------------------------------------
+        # ---- example queries (dropdown) ------------------------------------
         with gr.Row(elem_id="fq-examples"):
-            gr.HTML("<span class='fq-ex-label'>Try</span>", elem_classes="fq-flat")
-            example_btns = [
-                gr.Button(q if len(q) < 46 else q[:44] + "…", size="sm", elem_classes="fq-ex", scale=0)
-                for q in EXAMPLE_QUERIES
-            ]
-            clear_btn = gr.Button("Clear", size="sm", elem_classes="fq-ex", scale=0)
+            example_dropdown = gr.Dropdown(
+                choices=EXAMPLE_QUERIES,
+                value=None,
+                label="💡 أسئلة مقترحة للتجربة (Preset Questions)",
+                info="اختر سؤالاً من القائمة لتعبئة حقل البحث وتجربة المحرك مباشرة",
+                scale=5,
+                allow_custom_value=False,
+                filterable=True,
+                elem_classes="fq-ex-dropdown",
+            )
+            clear_btn = gr.Button("مسح (Clear)", size="sm", elem_classes=["fq-ex", "fq-ex-clear"], scale=1)
 
         query_info = gr.HTML(EMPTY_QUERY, elem_classes="fq-flat")
 
@@ -2239,12 +2273,14 @@ def build_ui(app: FatwaApp) -> gr.Blocks:
 
         run_kw = dict(fn=search, inputs=inputs, outputs=outputs, show_progress="hidden")
         query.submit(**run_kw)
-        for btn, text in zip(example_btns, EXAMPLE_QUERIES):
-            btn.click(lambda t=text: t, outputs=query).then(**run_kw)
+        example_dropdown.input(
+            lambda q: q or "", inputs=example_dropdown, outputs=query, show_progress="hidden"
+        ).then(**run_kw)
 
         clear_btn.click(
-            lambda: ("", EMPTY_QUERY, EMPTY_PIPELINE, EMPTY_TABLE, EMPTY_TABLE, EMPTY_RESULTS, ""),
-            outputs=[query] + outputs, show_progress="hidden",
+            lambda: ("", None, EMPTY_QUERY, EMPTY_PIPELINE, EMPTY_TABLE, EMPTY_TABLE, EMPTY_RESULTS, ""),
+            outputs=[query, example_dropdown] + outputs,
+            show_progress="hidden",
         )
 
         theme_btn.click(
